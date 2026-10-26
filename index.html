@@ -1,0 +1,1074 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#12A99B">
+<meta name="description" content="Appli de révision d'anglais (Première) : connecteurs, structures, méthode de production écrite, lettre argumentative.">
+<style>[hidden]{display:none!important} body{margin:0} :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)} img{max-width:100%}</style>
+<title>Writing Quest</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;700;800;900&display=swap">
+<style>
+/* Layout: a single centred phone-width column; home = zig-zag learning path, lesson = full-screen card with a sliding feedback tray */
+:root{
+  --bg:#F2F6FF; --surface:#FFFFFF; --surface2:#E8EEFC; --line:#D5DDF0; --fg:#1B2340; --muted:#5F6A8C;
+  --brand:#12A99B; --brand-d:#0C7F74; --brand-bg:#DDF5F2;
+  --ok:#2BB55B; --ok-d:#1E8C45; --ok-bg:#DDF6E5; --ok-fg:#14652F;
+  --bad:#F2545B; --bad-d:#C93A41; --bad-bg:#FFE2E3; --bad-fg:#9C2329;
+  --sun:#FFBE2E; --sun-d:#D99A0B; --flame:#FF7A1A;
+  --c1:#12A99B; --c1d:#0C7F74; --c2:#FF7A1A; --c2d:#CC5B08; --c3:#E5468F; --c3d:#B42C6C;
+  --c4:#3D7BF2; --c4d:#2557BE; --c5:#7A5AF0; --c5d:#5638C2; --c6:#F2A516; --c6d:#C27F00; --c7:#E8513D; --c7d:#B53524;
+  --onc:#FFFFFF; --shadow:0 2px 0 rgba(27,35,64,.06), 0 8px 24px rgba(27,35,64,.06);
+  --f-display:"Fredoka","Baloo 2","Trebuchet MS",system-ui,sans-serif;
+  --f-body:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1426; --surface:#171F38; --surface2:#202A49; --line:#2F3B62; --fg:#EEF2FF; --muted:#9BA6CA;
+  --brand-bg:#123A3A; --ok-bg:#133523; --ok-fg:#8BE3A8; --bad-bg:#43191D; --bad-fg:#FFB0B4;
+  --shadow:0 2px 0 rgba(0,0,0,.25), 0 8px 24px rgba(0,0,0,.25); color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0E1426; --surface:#171F38; --surface2:#202A49; --line:#2F3B62; --fg:#EEF2FF; --muted:#9BA6CA;
+  --brand-bg:#123A3A; --ok-bg:#133523; --ok-fg:#8BE3A8; --bad-bg:#43191D; --bad-fg:#FFB0B4;
+  --shadow:0 2px 0 rgba(0,0,0,.25), 0 8px 24px rgba(0,0,0,.25); color-scheme:dark }
+
+html,body{height:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.45;-webkit-tap-highlight-color:transparent}
+*{box-sizing:border-box}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid var(--c4);outline-offset:2px}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;text-wrap:balance;margin:0}
+.wrap{max-width:560px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 110px}
+
+/* ---- top bar ---- */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);display:flex;align-items:center;gap:10px;padding-block:12px}
+.brandname span{white-space:nowrap}.brandname{min-width:0;font-family:var(--f-display);font-weight:700;font-size:21px;letter-spacing:.2px;display:flex;align-items:center;gap:8px;margin-right:auto}
+.brandname small{font-family:var(--f-body);font-weight:800;font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;display:block;line-height:1}
+.pill{flex:none;white-space:nowrap;display:flex;align-items:center;gap:5px;font-weight:900;font-size:15px;padding:5px 9px;border-radius:999px;background:var(--surface);border:2px solid var(--line)}
+.pill.fire{color:var(--flame)} .pill.xp{color:var(--sun-d)}
+.iconbtn{flex:none;width:38px;height:38px;border-radius:12px;border:2px solid var(--line);background:var(--surface);display:grid;place-items:center;font-size:17px}
+
+/* ---- cards ---- */
+.card{background:var(--surface);border:2px solid var(--line);border-radius:20px;padding:16px}
+.goal{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;margin-top:4px}
+.ring{width:78px;height:78px;position:relative}
+.ring svg{transform:rotate(-90deg)}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-display);font-size:18px}
+.goal h2{font-size:20px}
+.goal p{margin:2px 0 10px;color:var(--muted);font-weight:700;font-size:14px}
+.week{display:flex;gap:6px;margin-top:12px;grid-column:1/-1}
+.week div{flex:1;text-align:center;font-size:11px;font-weight:800;color:var(--muted)}
+.week i{display:block;height:26px;border-radius:9px;background:var(--surface2);margin-bottom:3px;position:relative;overflow:hidden}
+.week i.on{background:var(--flame)} .week i.today{outline:2px solid var(--flame);outline-offset:1px}
+
+/* ---- 3D buttons ---- */
+.btn{border:0;border-radius:16px;padding:14px 18px;font-weight:900;font-size:16px;letter-spacing:.04em;text-transform:uppercase;background:var(--brand);color:var(--onc);box-shadow:0 4px 0 var(--brand-d);transition:transform .06s, box-shadow .06s, filter .15s;width:100%}
+.btn:active{transform:translateY(4px);box-shadow:0 0 0 var(--brand-d)}
+.btn:hover{filter:brightness(1.05)}
+.btn[disabled]{background:var(--surface2);color:var(--muted);box-shadow:0 4px 0 var(--line);cursor:default;filter:none;transform:none}
+.btn.ok{background:var(--ok);box-shadow:0 4px 0 var(--ok-d)}
+.btn.bad{background:var(--bad);box-shadow:0 4px 0 var(--bad-d)}
+.btn.ghost{background:var(--surface);color:var(--brand-d);border:2px solid var(--line);box-shadow:0 4px 0 var(--line)}
+:root[data-theme="dark"] .btn.ghost{color:var(--brand)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn.ghost{color:var(--brand)}}
+
+/* ---- path ---- */
+.section-title{font-family:var(--f-display);font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:26px 2px 6px;font-weight:600}
+.path{display:flex;flex-direction:column;gap:6px;padding-top:6px}
+.node{display:flex;align-items:center;gap:14px;background:none;border:0;padding:6px 0;text-align:left;width:100%}
+.node:nth-child(4n+2){padding-left:42px}.node:nth-child(4n+3){padding-left:84px}.node:nth-child(4n+4){padding-left:42px}
+.bubble{position:relative;flex:none;width:84px;height:84px;display:grid;place-items:center}
+.bubble svg{position:absolute;inset:0;transform:rotate(-90deg)}
+.disc{width:64px;height:60px;border-radius:50%;display:grid;place-items:center;font-size:28px;background:var(--uc);box-shadow:0 6px 0 var(--ucd);transition:transform .08s}
+.node:active .disc{transform:translateY(5px);box-shadow:0 1px 0 var(--ucd)}
+.node .lbl{min-width:0}
+.node .lbl b{display:block;font-family:var(--f-display);font-weight:600;font-size:17px;line-height:1.2}
+.node .lbl span{display:block;color:var(--muted);font-size:13px;font-weight:700}
+.node .lbl em{font-style:normal;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:var(--onc);background:var(--uc);border-radius:7px;padding:2px 7px;display:inline-block;margin-top:4px}
+.start-tag{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--surface);border:2px solid var(--line);color:var(--brand-d);font-weight:900;font-size:11px;padding:2px 8px;border-radius:9px;letter-spacing:.06em;white-space:nowrap;animation:bob 1.6s ease-in-out infinite;z-index:1}
+@keyframes bob{50%{transform:translate(-50%,-4px)}}
+
+.science{display:grid;gap:10px}
+.science .row{display:grid;grid-template-columns:40px 1fr;gap:10px;align-items:start}
+.science .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:20px;background:var(--surface2)}
+.science b{font-family:var(--f-display);font-weight:600;font-size:16px}
+.science p{margin:0;color:var(--muted);font-size:14px;font-weight:600}
+
+/* ---- tab bar ---- */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--surface);border-top:2px solid var(--line);display:flex;justify-content:center;padding:6px max(16px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.tabs div{display:flex;gap:6px;max-width:560px;width:100%}
+.tabs button{flex:1;border:2px solid transparent;background:none;border-radius:14px;padding:6px 4px;font-weight:900;font-size:12px;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:1px;letter-spacing:.04em;text-transform:uppercase}
+.tabs button span{font-size:22px}
+.tabs button.on{border-color:var(--brand);background:var(--brand-bg);color:var(--brand-d)}
+:root[data-theme="dark"] .tabs button.on{color:var(--brand)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tabs button.on{color:var(--brand)}}
+
+/* ---- fiches ---- */
+.chips{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px;scrollbar-width:none}
+.chip{flex:none;border:2px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 13px;font-weight:800;font-size:14px}
+.chip.on{background:var(--uc);border-color:var(--uc);color:var(--onc)}
+.fgroup{margin-top:14px}
+.fgroup h3{font-size:18px;display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.fgroup h3 i{font-style:normal;width:30px;height:30px;border-radius:10px;display:grid;place-items:center;background:var(--uc);font-size:16px}
+.fl{display:grid;gap:8px}
+.fitem{background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:10px 12px;display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center}
+.fitem .en{font-weight:900;font-size:16px}
+.fitem .fr{color:var(--muted);font-weight:700;font-size:14px}
+.fitem .exs{grid-column:1/-1;font-size:14px;font-style:italic;color:var(--fg);opacity:.85;margin-top:2px}
+.fitem .tip{grid-column:1/-1;font-size:13px;font-weight:700;color:var(--brand-d);margin-top:2px}
+:root[data-theme="dark"] .fitem .tip{color:var(--brand)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .fitem .tip{color:var(--brand)}}
+.lvl{display:flex;gap:2px}
+.lvl s{display:block;width:6px;height:14px;border-radius:3px;background:var(--surface2)}
+.lvl s.on{background:var(--uc)}
+.say{border:0;background:var(--surface2);border-radius:10px;width:34px;height:34px;display:grid;place-items:center;font-size:16px;flex:none}
+.letter{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:16px;font-size:15px;line-height:1.6}
+.letter p{margin:0 0 10px}
+.letter mark{background:var(--sun);color:#1B2340;border-radius:5px;padding:0 3px;font-weight:800}
+
+/* ---- stats ---- */
+.bars{display:grid;gap:12px}
+.bar{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center}
+.bar .t{font-weight:800;font-size:14px;margin-bottom:4px}
+.bar .track{height:12px;background:var(--surface2);border-radius:99px;overflow:hidden}
+.bar .track i{display:block;height:100%;background:var(--uc);border-radius:99px}
+.bar .pc{font-weight:900;font-size:14px;font-variant-numeric:tabular-nums}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tile{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:12px;text-align:center}
+.tile b{display:block;font-family:var(--f-display);font-size:26px;font-variant-numeric:tabular-nums}
+.tile span{font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+/* ---- lesson ---- */
+.lesson{position:fixed;inset:0;z-index:20;background:var(--bg);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px)}
+.lhead{display:flex;align-items:center;gap:12px;padding:14px max(16px,env(safe-area-inset-right,0px)) 8px max(16px,env(safe-area-inset-left,0px));max-width:640px;width:100%;margin:0 auto}
+.close{border:0;background:none;font-size:26px;color:var(--muted);width:36px;height:36px;line-height:1}
+.prog{flex:1;height:16px;background:var(--surface2);border-radius:99px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--ok);border-radius:99px;transition:width .35s cubic-bezier(.3,1.4,.6,1);position:relative}
+.prog i::after{content:"";position:absolute;left:8px;right:8px;top:3px;height:4px;border-radius:9px;background:rgba(255,255,255,.35)}
+.combo{font-weight:900;color:var(--flame);font-size:15px;min-width:46px;text-align:right}
+.lbody{flex:1;overflow-y:auto;width:100%}
+.lin{max-width:640px;margin:0 auto;padding:10px max(16px,env(safe-area-inset-right,0px)) 30px max(16px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:16px}
+.kicker{font-weight:900;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--uc);display:flex;align-items:center;gap:8px}
+.kicker .new{background:var(--sun);color:#1B2340;border-radius:7px;padding:1px 7px;font-size:11px}
+.q{font-size:24px;line-height:1.25}
+.qrow{display:flex;gap:12px;align-items:flex-start}
+.mascot{flex:none;width:64px;height:64px}
+.speech{position:relative;background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:12px 14px;font-weight:800;font-size:18px;flex:1;display:flex;gap:10px;align-items:center;min-width:0}
+.speech::before{content:"";position:absolute;left:-9px;top:20px;width:14px;height:14px;background:var(--surface);border-left:2px solid var(--line);border-bottom:2px solid var(--line);transform:rotate(45deg)}
+.speech span{flex:1;min-width:0}
+.sentence{font-size:20px;font-weight:800;line-height:1.6;background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;gap:10px;align-items:flex-start}
+.sentence span{flex:1}
+.blank{display:inline-block;min-width:90px;border-bottom:3px solid var(--uc);padding:0 6px;color:var(--uc);text-align:center}
+.opts{display:grid;gap:10px}
+.opts.two{grid-template-columns:1fr 1fr}
+.opt{display:flex;align-items:center;gap:12px;text-align:left;background:var(--surface);border:2px solid var(--line);border-bottom-width:5px;border-radius:16px;padding:13px 14px;font-weight:800;font-size:17px;transition:transform .05s}
+.opt:active{transform:translateY(2px)}
+.opt kbd{flex:none;width:26px;height:26px;border:2px solid var(--line);border-radius:8px;display:grid;place-items:center;font-family:var(--f-body);font-size:13px;color:var(--muted)}
+.opt.sel{border-color:var(--c4);background:color-mix(in srgb,var(--c4) 12%,var(--surface));color:var(--c4)}
+.opt.sel kbd{border-color:var(--c4);color:var(--c4)}
+.opt.right{border-color:var(--ok);background:var(--ok-bg);color:var(--ok-fg)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-bg);color:var(--bad-fg)}
+.opt.big{justify-content:center;font-size:22px;padding:22px}
+.answerline{min-height:64px;border-bottom:2px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;padding:6px 0 12px}
+.answerline.col{flex-direction:column;flex-wrap:nowrap;border:2px dashed var(--line);border-radius:16px;padding:10px;min-height:120px}
+.bank{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.bank.col{flex-direction:column;align-items:stretch}
+.tok{background:var(--surface);border:2px solid var(--line);border-bottom-width:4px;border-radius:12px;padding:8px 12px;font-weight:800;font-size:17px}
+.tok.ghost{visibility:hidden}
+.tok.used{background:var(--surface2);color:transparent;border-color:var(--surface2)}
+.answerline.col .tok, .bank.col .tok{text-align:left;font-size:15px}
+.tok .n{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:7px;background:var(--uc);color:var(--onc);font-size:12px;margin-right:8px}
+.typein{width:100%;font:inherit;font-weight:800;font-size:20px;padding:16px;border-radius:16px;border:2px solid var(--line);background:var(--surface);color:var(--fg)}
+.typein:focus{border-color:var(--c4);outline:none}
+.hintbtn{align-self:flex-start;border:0;background:none;color:var(--c4);font-weight:900;font-size:14px;padding:0;text-decoration:underline;text-underline-offset:3px}
+.pairs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pairs .col{display:grid;gap:10px;align-content:start}
+.pair{background:var(--surface);border:2px solid var(--line);border-bottom-width:5px;border-radius:14px;padding:12px 10px;font-weight:800;font-size:15px;min-height:56px}
+.pair.sel{border-color:var(--c4);color:var(--c4);background:color-mix(in srgb,var(--c4) 12%,var(--surface))}
+.pair.done{border-color:var(--ok);background:var(--ok-bg);color:var(--ok-fg);opacity:.55;pointer-events:none}
+.pair.err{border-color:var(--bad);background:var(--bad-bg);color:var(--bad-fg);animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.lfoot{border-top:2px solid var(--line);background:var(--bg);padding:14px max(16px,env(safe-area-inset-right,0px)) calc(14px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));transition:background .2s}
+.lfoot .in{max-width:640px;margin:0 auto;display:grid;gap:12px}
+.lfoot.ok{background:var(--ok-bg);border-color:transparent}
+.lfoot.bad{background:var(--bad-bg);border-color:transparent}
+.fb{display:none;gap:12px;align-items:flex-start}
+.lfoot.ok .fb,.lfoot.bad .fb{display:flex;animation:up .25s ease-out}
+@keyframes up{from{transform:translateY(12px);opacity:0}}
+.fb .badge{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-size:24px;background:var(--surface)}
+.fb h3{font-size:21px}
+.lfoot.ok .fb h3{color:var(--ok-fg)} .lfoot.bad .fb h3{color:var(--bad-fg)}
+.fb p{margin:3px 0 0;font-weight:700;font-size:15px}
+.lfoot.ok .fb p{color:var(--ok-fg)} .lfoot.bad .fb p{color:var(--bad-fg)}
+.fb .why{font-weight:600;opacity:.9}
+.fb .say{background:var(--surface)}
+.fbtext{flex:1;min-width:0}
+.result{max-width:520px;margin:0 auto;padding:30px 16px;text-align:center;display:grid;gap:18px;justify-items:center}
+.result h1{font-size:32px;color:var(--sun-d)}
+.result p{margin:0;color:var(--muted);font-weight:700;max-width:40ch}
+.result .tiles{width:100%}
+.result .tile{border-color:var(--tc);}
+.result .tile b{color:var(--tc)}
+canvas#confetti{position:fixed;inset:0;pointer-events:none;z-index:40}
+.sheet-bg{position:fixed;inset:0;background:rgba(10,14,30,.45);z-index:15;display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:var(--surface);width:100%;max-width:560px;border-radius:24px 24px 0 0;padding:20px max(16px,env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:grid;gap:12px;animation:up .2s ease-out}
+.sheet .hd{display:flex;gap:12px;align-items:center}
+.sheet .hd .disc{width:54px;height:50px;font-size:24px;flex:none}
+.sheet h2{font-size:22px}
+.sheet p{margin:0;color:var(--muted);font-weight:700;font-size:14px}
+.muted{color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:12px;font-weight:800;z-index:50}
+@media (max-width:420px){.top{gap:6px}.brandname{font-size:18px}.brandname small{font-size:9px}.pill{font-size:14px;padding:4px 8px}.q{font-size:21px}.sentence{font-size:18px}.opt{font-size:16px}.node:nth-child(4n+3){padding-left:64px}.node:nth-child(4n+2),.node:nth-child(4n+4){padding-left:32px}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<script src="audio.js" async></script>
+<div id="app"></div>
+<canvas id="confetti" hidden></canvas>
+
+<script>
+/* =========================================================
+   CONTENU — tiré des 3 fiches de Première C
+   ========================================================= */
+const CATS = {
+  add:{fr:'Addition',en:'Addition',ic:'➕'},
+  con:{fr:'Opposition',en:'Contrast',ic:'↔️'},
+  cau:{fr:'Cause & conséquence',en:'Cause and Effect',ic:'⚡'},
+  cmp:{fr:'Comparaison',en:'Comparison',ic:'⚖️'},
+  tim:{fr:'Temps / chronologie',en:'Time / Sequence',ic:'⏱️'},
+  exa:{fr:'Exemple',en:'Example / Illustration',ic:'🔍'},
+  emp:{fr:'Insistance',en:'Emphasis',ic:'❗'},
+  cnd:{fr:'Condition',en:'Condition',ic:'🔀'},
+  cnc:{fr:'Concession',en:'Concession',ic:'🤝'},
+  sum:{fr:'Conclusion',en:'Summary / Conclusion',ic:'🏁'},
+  pur:{fr:'But',en:'Purpose',ic:'🎯'},
+};
+// [en, fr, cats, phrase à trous, distracteurs, astuce]
+const LW = [
+ ['And','Et','add','I bought some bread ___ some cheese.',['although','unless','therefore']],
+ ['Also','Aussi','add','She plays the piano. She ___ sings in a choir.',['unless','whereas','because of']],
+ ['In addition','De plus','add','The hotel has a pool. ___, it offers a free breakfast.',['Unless','Because of','Whereas']],
+ ['Moreover','De plus / En outre','add','The plan is too expensive. ___, it will take years to complete.',['Unless','Although','Like'],'Très apprécié dans un texte argumentatif pour ajouter un argument.'],
+ ['Furthermore','En outre','add','Smartphones distract students. ___, they can damage their sleep.',['Unless','Even though','Such as']],
+ ['As well as','Ainsi que','add','He speaks German ___ French.',['unless','therefore','because']],
+ ['Not only ... but also','Non seulement ... mais aussi','add',null,null,'Les deux morceaux encadrent les deux idées : not only A but also B.',{fr:'Elle est non seulement intelligente mais aussi gentille.',en:'She is not only clever but also kind.',extra:['although','so']}],
+ ['But','Mais','con','I wanted to go out, ___ it was raining.',['unless','so that','such as']],
+ ['However','Cependant','con','The film was long. ___, it was never boring.',['Therefore','For instance','Because of'],'En début de phrase, toujours suivi d\'une virgule.'],
+ ['On the other hand','D\'autre part','con','Living in a big city is exciting. ___, it can be very stressful.',['Therefore','For example','Similarly'],'Souvent après « On the one hand… » pour présenter l\'autre face.'],
+ ['Nevertheless','Néanmoins','con cnc','The task was very difficult. ___, he finished it on time.',['Therefore','Because of','Such as']],
+ ['Although','Bien que / Quoique','con cnc','___ it was cold, we went swimming.',['Because','Unless','In order to'],'Although + sujet + verbe (pas de subjonctif en anglais !).'],
+ ['Even though','Même si','con cnc','She failed the exam ___ she had worked hard.',['because','so that','provided that'],'Plus fort que although : le fait est réel.'],
+ ['Yet','Pourtant','con','The test was short, ___ very difficult.',['because of','such as','unless']],
+ ['In contrast','En revanche','con','Paris is a huge city. ___, Portadown is a small town.',['Therefore','For instance','As a result']],
+ ['Whereas','Tandis que','con','My brother loves football, ___ I prefer tennis.',['because of','in order to','such as'],'Compare deux faits qui s\'opposent dans la même phrase.'],
+ ['Because','Parce que','cau','We stayed at home ___ it was raining.',['although','whereas','unless'],'Because + sujet + verbe.'],
+ ['Because of','À cause de','cau','The match was cancelled ___ the storm.',['because','although','so that'],'Because of + nom (the storm). Because + phrase (it was stormy).'],
+ ['Due to','En raison de','cau','The train was late ___ a technical problem.',['because','even though','unless'],'Due to + nom, comme because of.'],
+ ['As a result','En conséquence','cau','He didn\'t revise. ___, he failed the test.',['However','For instance','Although']],
+ ['Therefore','Donc','cau','The road was icy; ___, drivers had to be very careful.',['whereas','unless','however']],
+ ['Thus','Ainsi','cau','The factory closed, and ___ hundreds of people lost their jobs.',['although','unless','whereas']],
+ ['Consequently','Par conséquent','cau','Prices went up. ___, people bought less.',['Although','Unless','Such as']],
+ ['So','Alors','cau','I was tired, ___ I went to bed early.',['although','unless','because of']],
+ ['Like','Comme','cmp','She sings ___ a professional.',['although','unless','therefore'],'Like + nom : she sings like a star.'],
+ ['As','Comme (comparaisons)','cmp','She is as tall ___ her mother.',['like','than','that'],'as + adjectif + as : aussi … que.'],
+ ['Similarly','De même','cmp','Many Catholics want peace. ___, many Protestants want an end to violence.',['Unless','Because of','Although']],
+ ['Just as','Tout comme','cmp','___ my father did, I want to become a doctor.',['Unless','Because of','Whereas']],
+ ['In the same way','De la même manière','cmp','Plants need water. ___, people need kindness to grow.',['Unless','Although','Because of']],
+ ['Before','Avant','tim','Brush your teeth ___ you go to bed.',['unless','whereas','so that']],
+ ['After','Après','tim','___ the exam, we went to the cinema.',['Unless','Although','In order to']],
+ ['Then','Ensuite','tim','First, read the subject twice. ___, write a plan.',['Unless','Although','Because of']],
+ ['Next','Suivant / Ensuite','tim','Write your draft. ___, check the grammar.',['Unless','Whereas','Because of']],
+ ['Finally','Finalement','tim','Firstly, … Secondly, … ___, I would like to thank you.',['Unless','Because of','Such as'],'Dernier élément d\'une liste.'],
+ ['Subsequently','Subséquemment / Par la suite','tim','She moved to London in 2020 and ___ found a job there.',['unless','whereas','although']],
+ ['Meanwhile','Pendant ce temps','tim','Dad was cooking dinner. ___, the kids were setting the table.',['Unless','Therefore','Such as']],
+ ['At the same time','En même temps','tim','I can\'t listen to music and study ___.',['in order to','unless','such as']],
+ ['Eventually','Finalement (aboutissement)','tim','After hours of negotiations, they ___ reached an agreement.',['unless','whereas','because of'],'Faux ami ! eventually = finalement, au bout du compte. « Éventuellement » = possibly.'],
+ ['For example','Par exemple','exa','Some sports are dangerous, ___, boxing.',['unless','therefore','whereas']],
+ ['For instance','Par exemple','exa','Many towns, ___ Portadown, have a long history of marches.',['unless','although','therefore']],
+ ['Such as','Tel que','exa','I love fruit ___ apples and pears.',['unless','although','because'],'Such as + nom(s), sans virgule ensuite.'],
+ ['In other words','En d\'autres termes','exa','He never moves from the sofa; ___, he is very lazy.',['unless','although','because of']],
+ ['That is to say','C\'est-à-dire','exa','We will meet in two weeks, ___ on the 15th.',['unless','although','because of']],
+ ['Namely','C\'est-à-dire / À savoir','exa','Two parts share the island, ___ the Republic of Ireland and Northern Ireland.',['unless','although','therefore']],
+ ['Indeed','En effet','emp','The situation is serious. ___, it is getting worse every day.',['Unless','Whereas','Because of']],
+ ['In fact','En fait','emp','He says he is fine. ___, he is very worried.',['Unless','Because of','Such as']],
+ ['Especially','Surtout','emp','I love sport, ___ football.',['unless','because','whereas']],
+ ['Above all','Avant tout','emp','___, we want peace for our children.',['Unless','Because of','Whereas']],
+ ['Particularly','Particulièrement','emp','Young people, ___ teenagers, use social media a lot.',['unless','although','therefore']],
+ ['Significantly','Significativement','emp','Violence has fallen ___ since 1998.',['unless','although','whereas']],
+ ['Notably','Notamment','emp','Many great writers, ___ Seamus Heaney, came from Northern Ireland.',['unless','although','therefore']],
+ ['If','Si','cnd','___ it rains, we will stay at home.',['Although','Whereas','Because of']],
+ ['Unless','À moins que','cnd','You won\'t pass ___ you work harder.',['if','because of','such as'],'Unless = if … not. You won\'t pass unless you work = if you don\'t work.'],
+ ['Provided that','À condition que','cnd','You can go out ___ you finish your homework first.',['although','because of','whereas']],
+ ['In case','Au cas où','cnd','Take an umbrella ___ it rains.',['unless','although','whereas']],
+ ['Even if','Même si','cnd','I\'ll go running ___ it rains.',['because of','so that','such as'],'Even if = même si (hypothèse). Even though = même si (fait réel).'],
+ ['As long as','Tant que','cnd','You can borrow my bike ___ you bring it back tonight.',['although','whereas','because of']],
+ ['Though','Bien que / Cependant','cnc','It was a good film. It was a bit long, ___.',['unless','because','such as'],'En fin de phrase, though = pourtant / cependant.'],
+ ['Nonetheless','Cependant','cnc','The risks are high. ___, we must try.',['Because of','Unless','Such as']],
+ ['In conclusion','En conclusion','sum','___, the march should be cancelled to protect peace.',['Unless','Whereas','Because of']],
+ ['To summarize','Pour résumer','sum','___, there are three main reasons for my decision.',['Unless','Whereas','Even though']],
+ ['In brief','En bref','sum','___, the project was a success.',['Unless','Whereas','Because of']],
+ ['To sum up','En résumé','sum','___, mutual respect is the key to peace.',['Unless','Although','Such as']],
+ ['All in all','En somme','sum','___, it was a great holiday.',['Unless','Whereas','Because of']],
+ ['Ultimately','Finalement','sum','___, the decision belongs to the Prime Minister.',['Unless','Whereas','Such as']],
+ ['In order to','Afin de','pur','She studies hard ___ pass her exams.',['so that','because','although'],'In order to + base verbale. So that + sujet + verbe.'],
+ ['So that','Afin que / De sorte que','pur','Speak louder ___ everyone can hear you.',['in order to','because of','although'],'So that + sujet + verbe (everyone can hear).'],
+ ['For the purpose of','Dans le but de','pur','The meeting was organised ___ finding a peaceful solution.',['in order to','so that','unless'],'For the purpose of + verbe en -ING.'],
+];
+
+const VOC = [
+ ['divisive','qui divise / source de division','This march is seen by many local people as unwanted and ___.',['peaceful','helpful','pleased']],
+ ['goodwill','bonne volonté','Such a decision would show ___ and respect for local residents.',['badly','goodness','willing']],
+ ['to reopen old wounds','rouvrir de vieilles blessures','Unfortunately, this march risks ___ and creating conflict.',['reopening old windows','opening old doors','closing old roads']],
+ ['disorder','des troubles (à l\'ordre public)','The police have warned that the march could lead to ___ and violence.',['order','disorders of','orderly']],
+ ['neighbourhood','quartier','Residents don\'t want the march to pass through their ___.',['neighbour','neighbourly','neighbouring']],
+ ['mutual respect','respect mutuel','___ is essential if we want to build a shared future.',['Mutual respectful','Respect mutual','Mutually respect']],
+ ['concerns','inquiétudes / préoccupations','We hope that you will consider our ___.',['concerned','concerning','concern of']],
+ ['to give up','renoncer à / abandonner','We are not asking anyone ___ their traditions.',['to give in','to give out','to give away']],
+ ['community relations','relations entre communautés','Protests and counter-protests could damage ___.',['community relationship of','relations community','communities relation']],
+ ['a concerned resident','un habitant inquiet','The letter is signed by ___ of Northern Ireland.',['a concerning resident','a concern resident','a residing concern']],
+];
+
+const GRAM = [
+ {id:'if',name:'If clauses',fr:'If + prétérit → would + base verbale',ex:'If I had more time, I would travel the world.',
+  gaps:[['If I ___ more time, I would travel the world.','had',['have','will have','would have'],'If + prétérit (had), puis would + base verbale.'],
+        ['If I were the examiner, I ___ understand this text easily.','would',['will','am','did'],'Hypothèse irréelle : If + were / prétérit → would.']]},
+ {id:'rather',name:'I\'d rather',fr:'I\'d rather + base verbale = je préférerais',ex:'I\'d rather stay at home.',
+  gaps:[['I\'d rather ___ at home tonight.','stay',['to stay','staying','stayed'],'I\'d rather + base verbale, sans to.'],
+        ['I\'d rather ___ tea, please.','have',['to have','having','had'],'Base verbale après I\'d rather.']]},
+ {id:'better',name:'I\'d better',fr:'I\'d better + base verbale = je ferais mieux de',ex:'I\'d better revise my lesson.',
+  gaps:[['I\'d better ___ my lesson.','revise',['to revise','revising','revised'],'I\'d better + base verbale, sans to.'],
+        ['It\'s late. We\'d better ___ now.','go',['to go','going','gone'],'We\'d better go = on ferait mieux d\'y aller.']]},
+ {id:'inf',name:'Proposition infinitive',fr:'want / would like + COD + to + verbe',ex:'I want him to understand.',
+  gaps:[['I want ___ understand the problem.','him to',['that he','he to','him'],'want + pronom complément + to : I want him to… (jamais « I want that he »).'],
+        ['My parents would like me ___ my homework.','to do',['that I do','doing','do'],'would like + me + to + verbe.']]},
+ {id:'caus',name:'Structure causative',fr:'have + objet + participe passé = faire faire',ex:'I had my bike repaired.',
+  gaps:[['I had my bike ___.','repaired',['repair','to repair','repairing'],'have + objet + participe passé : je l\'ai fait réparer.'],
+        ['She is going to have her car ___ tomorrow.','washed',['wash','to wash','washing'],'Quelqu\'un d\'autre fait l\'action : participe passé.']]},
+ {id:'pass',name:'Voix passive',fr:'be + participe passé',ex:'The decision was made yesterday.',
+  gaps:[['The decision ___ made yesterday.','was',['did','had','is'],'Passif au prétérit : was + participe passé.'],
+        ['The march ___ cancelled by the police last year.','was',['did','has','is'],'last year → prétérit : was cancelled.'],
+        ['Many letters ___ written to the government every day.','are',['is','do','have'],'Présent, sujet pluriel : are written.']]},
+ {id:'mod',name:'Modaux',fr:'must, might, should, could… + base verbale',ex:'You should talk to Unionist leaders.',
+  gaps:[['You ___ wear a seatbelt: it\'s the law.','must',['might','would','could'],'Obligation forte → must.'],
+        ['Take a coat, it ___ rain later.','might',['must','should','mustn\'t'],'Possibilité → might.'],
+        ['You look tired. You ___ go to bed early.','should',['might','would','can\'t'],'Conseil → should.']]},
+ {id:'subj',name:'Subjonctif américain',fr:'suggest / insist / essential that + base verbale',ex:'The principal suggested that he be suspended.',
+  gaps:[['The principal suggested that he ___ suspended.','be',['is','was','will be'],'Après suggest that : base verbale (be), même avec he.'],
+        ['It is essential that every student ___ on time.','arrive',['arrives','arrived','is arriving'],'essential that + base verbale, sans -s.']]},
+ {id:'comp',name:'Comparatifs & superlatifs',fr:'more … than / the most …',ex:'Peace is the most important issue.',
+  gaps:[['This method is ___ the old one.','more effective than',['more effective that','most effective than','effectiver than'],'Adjectif long : more + adj + than.'],
+        ['Peace is ___ issue for our community.','the most important',['the more important','most important','the importantest'],'Superlatif d\'un adjectif long : the most + adj.']]},
+ {id:'prep',name:'Prépositions à connaître',fr:'interested in · depend on · good at',ex:'It depends on the weather.',
+  gaps:[['She is very interested ___ politics.','in',['on','at','by'],'interested IN.'],
+        ['It depends ___ the weather.','on',['of','from','in'],'depend ON (et pas « depend of » !).'],
+        ['He is really good ___ maths.','at',['in','on','for'],'good AT.']]},
+];
+
+const STEPS7 = ['Analyser soigneusement le sujet','Mobiliser vocabulaire et structures','Construire un plan','Rédiger un brouillon organisé','Relire le contenu et corriger la langue','Relire la ponctuation puis recopier','Faire une dernière relecture intégrale'];
+
+const METH = [
+ {id:'m7',title:'Les 7 étapes dans l\'ordre',ex:[{t:'order',q:'Remets les 7 étapes de la méthode dans l\'ordre.',items:STEPS7,why:'Réfléchir → planifier → rédiger → corriger → recopier → vérifier.'}]},
+ {id:'gold',title:'La règle d\'or',ex:[{t:'order',q:'Reconstitue la règle d\'or.',items:['Think','Plan','Draft','Correct','Copy','Check'],why:'Think → Plan → Draft → Correct → Copy → Check.',say:'Think, plan, draft, correct, copy, check.'}]},
+ {id:'lire',title:'Étape 1 : lire le sujet',ex:[{t:'mcq',q:'Étape 1 : combien de fois lit-on le sujet ?',opts:['Deux fois','Une fois suffit','Trois fois','Seulement les mots-clés'],why:'On lit le sujet deux fois et on souligne les mots-clés.'},
+   {t:'mcq',q:'Que souligne-t-on dans le sujet ?',opts:['Le thème, les personnages, le temps et le type de document','Les mots qu\'on ne connaît pas','Uniquement le nombre de mots','Les verbes irréguliers'],why:'Thème, personnages concernés, temps (passé/présent/futur), type de document.'}]},
+ {id:'quest1',title:'La question de l\'étape 1',ex:[{t:'build',q:'Quelle question se poser en analysant le sujet ?',a:'What exactly am I expected to write?',extra:['do','how'],why:'« Qu\'est-ce qu\'on attend exactement de moi ? »'},
+   {t:'mcq',q:'Quelle question se poser en analysant le sujet ?',opts:['What exactly am I expected to write?','How long can I write for?','Who will read my text?','What is my favourite topic?'],why:'On vérifie précisément ce qui est demandé.',say:'What exactly am I expected to write?'}]},
+ {id:'types',title:'Types de documents',ex:[{t:'mcq',q:'Lequel N\'EST PAS un type de document cité dans la méthode ?',opts:['A shopping list','A diary entry','A speech','An email'],why:'Article, speech, letter, email, diary entry, story…'},
+   {t:'mcq',q:'Dans le sujet « Write a letter to Prime Minister Andy Burnham… », quel est le type de document ?',opts:['Une lettre','Un article','Un discours','Un journal intime'],why:'« Write a letter » : on respecte les codes de la lettre.'}]},
+ {id:'faire',title:'Ce qu\'il faut faire',ex:[{t:'mcq',q:'« Arguing that the march should be cancelled » : que doit-on faire ?',opts:['Argumenter','Raconter','Imaginer','Décrire un lieu'],why:'Arguing = argumenter, donner des raisons pour convaincre.'}]},
+ {id:'brouillon2',title:'Étape 2 : mobiliser',ex:[{t:'mcq',q:'À l\'étape 2, avant de rédiger, que note-t-on au brouillon ?',opts:['Lexique, connecteurs, expressions et structures utiles','Le texte complet au propre','Une liste de fautes à éviter','Rien, on commence directement'],why:'On prépare ses outils : mots-clés, connecteurs, idiomes, verbes, structures.'},
+   {t:'tf',q:'Une bonne copie montre une certaine variété grammaticale.',a:true,why:'Varier les structures (if clauses, passif, modaux…) rapporte des points.'}]},
+ {id:'planarg',title:'Plan argumentatif',ex:[{t:'order',q:'Remets le plan d\'un texte argumentatif dans l\'ordre.',items:['Introduction','Argument 1','Argument 2','Contre-argument éventuel','Conclusion'],why:'Chaque paragraphe développe une idée principale.'}]},
+ {id:'planrec',title:'Plan d\'un récit',ex:[{t:'order',q:'Remets le plan d\'un récit dans l\'ordre.',items:['Situation initiale','Événement déclencheur','Développement','Dénouement'],why:'Le schéma narratif classique.'}]},
+ {id:'para',title:'Les paragraphes',ex:[{t:'mcq',q:'Chaque paragraphe doit…',opts:['développer une idée principale','contenir au moins trois idées','faire exactement 50 mots','commencer par « Firstly »'],why:'Une idée = un paragraphe.'},
+   {t:'tf',q:'On peut commencer à écrire sans plan si on a de bonnes idées.',a:false,why:'Jamais sans plan !'}]},
+ {id:'phrases',title:'Étape 4 : des phrases claires',ex:[{t:'tf',q:'Mieux vaut des phrases simples et claires que des phrases très longues.',a:true,why:'Les phrases trop longues multiplient les erreurs.'}]},
+ {id:'relire5',title:'Étape 5 : 1re relecture',ex:[{t:'mcq',q:'Lors de la 1re relecture, que vérifie-t-on sur les verbes ?',opts:['Le temps et les accords','La couleur de l\'encre','Leur longueur','Qu\'ils sont tous au présent'],why:'Temps correct ? Accords corrects ?'},
+   {t:'mcq',q:'Lequel est un point à vérifier dans le vocabulaire ?',opts:['Les faux amis et les mots français oubliés','Le nombre de lettres','L\'ordre alphabétique','Les mots les plus longs'],why:'Faux amis, répétitions, mots français oubliés.'}]},
+ {id:'relire6',title:'Étape 6 : ponctuation',ex:[{t:'mcq',q:'La 2e relecture (étape 6) porte uniquement sur…',opts:['la ponctuation','le plan','le vocabulaire','les idées'],why:'Majuscules, points, virgules, apostrophes, paragraphes.'},
+   {t:'tf',q:'Je peux corriger mes fautes au fur et à mesure en recopiant au propre.',a:false,why:'On recopie un texte déjà vérifié : ne pas corriger au fil de la copie.'}]},
+ {id:'final7',title:'Étape 7 : dernière question',ex:[{t:'build',q:'Quelle est la toute dernière question à se poser ?',a:'If I were the examiner, would I understand my text easily?',extra:['was','will'],why:'Si la réponse est oui, la copie est prête.'},
+   {t:'mcq',q:'Lequel NE fait PAS partie de la dernière relecture ?',opts:['Ajouter une nouvelle idée','Vérifier le nombre de mots','Vérifier que les temps sont cohérents','Vérifier que les consignes sont respectées'],why:'À ce stade on vérifie, on n\'ajoute plus.'}]},
+ {id:'archi',title:'L\'image de l\'architecte',ex:[{t:'mcq',q:'Une bonne production écrite se construit comme…',opts:['une maison : plan, construction, finitions','un sprint : le plus vite possible','un puzzle sans modèle','un brouillon jamais recopié'],why:'D\'abord le plan, ensuite la construction, puis les finitions.'}]},
+];
+
+const LETTER_PARTS = ['Se présenter et annoncer l\'objet','Reconnaître le point de vue adverse','Argument : les tensions entre communautés','Argument : la sécurité publique','Formuler la demande au Premier ministre','Proposer une solution respectueuse','Remercier et conclure'];
+
+const LETTER = [
+ {id:'open',title:'Ouvrir la lettre',ex:[{t:'mcq',q:'Quelle formule d\'ouverture convient pour écrire au Premier ministre ?',opts:['Dear Prime Minister Burnham,','Hi Andy!','Hey Prime Minister,','Hello my friend,'],why:'Registre formel : Dear + titre + nom, puis une virgule.',say:'Dear Prime Minister Burnham,'}]},
+ {id:'close',title:'Fermer la lettre',ex:[{t:'mcq',q:'Quand on connaît le nom du destinataire, on termine par…',opts:['Yours sincerely,','See you soon,','Love,','Cheers,'],why:'Yours sincerely = Je vous prie d\'agréer… (destinataire nommé).',say:'Yours sincerely,'}]},
+ {id:'reg',title:'Le registre',ex:[{t:'mcq',q:'Quel ton pour une lettre au Premier ministre ?',opts:['Formel, poli et argumenté','Familier et drôle','Agressif pour montrer sa colère','Neutre, sans opinion'],why:'On reste poli (We kindly ask you…), même pour défendre une position forte.'}]},
+ {id:'words',title:'La longueur',ex:[{t:'mcq',q:'Combien de mots demande le sujet sur Portadown ?',opts:['350 mots','150 mots','100 mots','1 000 mots'],why:'350 words : on vérifie le nombre de mots à l\'étape 7.'}]},
+ {id:'struct',title:'Le plan de la lettre modèle',ex:[{t:'order',q:'Remets les paragraphes de la lettre modèle dans l\'ordre.',items:LETTER_PARTS,why:'Introduction → concession → 2 arguments → demande → solution → conclusion.'}]},
+ {id:'concess',title:'Le rôle de la concession',ex:[{t:'mcq',q:'« We fully respect the right of people to celebrate their traditions. However, … » : à quoi sert cette phrase ?',opts:['Reconnaître l\'autre point de vue avant de le contester','Changer d\'avis','Remercier le Premier ministre','Raconter une anecdote'],why:'Concéder puis opposer avec However rend l\'argument plus convaincant.'}]},
+ {id:'l1',title:'Lettre : However',ex:[{t:'gap',s:'We fully respect the right of people to celebrate their traditions. ___, this march is seen by many local people as unwanted.',a:'However',d:['Therefore','For instance','Similarly'],why:'Opposition après une concession.'}]},
+ {id:'l2',title:'Lettre : As a result',ex:[{t:'gap',s:'For years, the Garvaghy Road has been a mainly nationalist area. ___, many residents believe the march could increase tensions.',a:'As a result',d:['However','Although','Unless'],why:'Cause → conséquence.'}]},
+ {id:'l3',title:'Lettre : Unfortunately',ex:[{t:'gap',s:'Today, most people want to live together peacefully. ___, this march risks reopening old wounds.',a:'Unfortunately',d:['Therefore','Similarly','Moreover'],why:'Unfortunately = malheureusement : introduit un fait regrettable.'}]},
+ {id:'l4',title:'Lettre : For these reasons',ex:[{t:'gap',s:'___ these reasons, we kindly ask you to speak with Unionist leaders.',a:'For',d:['Because','Due','Since'],why:'For these reasons = pour ces raisons : annonce la demande finale.'}]},
+ {id:'l5',title:'Lettre : Instead',ex:[{t:'gap',s:'We are not asking anyone to give up their traditions. ___, we hope for a solution that respects both communities.',a:'Instead',d:['Therefore','Moreover','As a result'],why:'Instead = au lieu de cela, plutôt.'}]},
+];
+const EXPR = [
+ ['I am writing to express my concerns about...','Je vous écris pour exprimer mes inquiétudes au sujet de…','I am writing to ___ my concerns about the march.','express',['speak','tell','talk'],['say','for']],
+ ['Many residents are worried that...','Beaucoup d\'habitants craignent que…','Many residents are ___ that the march will cause violence.','worried',['worrying','worry','worries'],['is','of']],
+ ['We kindly ask you to...','Nous vous prions de bien vouloir…','We kindly ask you ___ cancel the march.','to',['for','that','of'],['for','please']],
+ ['It is important to maintain peace and stability.','Il est important de maintenir la paix et la stabilité.','It is important to ___ peace and stability.','maintain',['maintaining','maintains','maintained'],['the','of']],
+ ['Both communities deserve respect.','Les deux communautés méritent le respect.','Both communities ___ respect.','deserve',['deserves','deserving','are deserve'],['the','is']],
+ ['We hope for a peaceful solution.','Nous espérons une solution pacifique.','We hope ___ a peaceful solution.','for',['to','of','at'],['to','the']],
+ ['Thank you for your attention to this matter.','Merci de l\'attention que vous porterez à cette question.','Thank you ___ your attention to this matter.','for',['to','of','about'],['the','at']],
+];
+
+const UNITS = [
+ {id:'u1',name:'Ajouter & opposer',sub:'Addition · Contrast',ic:'➕',c:'--c1',short:'Addition & Contrast',cats:['add','con']},
+ {id:'u2',name:'Causes, comparaisons & temps',sub:'Cause · Comparison · Time',ic:'⚡',c:'--c2',short:'Cause · Temps',cats:['cau','cmp','tim']},
+ {id:'u3',name:'Exemples, insistance & conditions',sub:'Example · Emphasis · Condition',ic:'🔍',c:'--c3',short:'Exemple · Condition',cats:['exa','emp','cnd']},
+ {id:'u4',name:'Concéder, conclure, viser un but',sub:'Concession · Summary · Purpose',ic:'🏁',c:'--c4',short:'Concession · But',cats:['cnc','sum','pur']},
+ {id:'u5',name:'Structures qui rapportent des points',sub:'If clauses, passif, modaux…',ic:'🧩',c:'--c5',short:'Grammaire'},
+ {id:'u6',name:'La méthode en 7 étapes',sub:'Think → Plan → Draft → Correct → Copy → Check',ic:'🪜',c:'--c6',short:'Méthode'},
+ {id:'u7',name:'La lettre argumentative',sub:'Portadown · expressions utiles',ic:'✉️',c:'--c7',short:'Lettre'},
+];
+
+/* ---- construire la liste d'items ---- */
+const ITEMS = [];
+const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\(.*?\)/g,'').replace(/\.\.\.|…/g,' ').replace(/[^a-z' ]/g,' ').replace(/\s+/g,' ').trim();
+const frParts = fr => fr.split('/').map(norm).filter(Boolean);
+LW.forEach(([en,fr,cats,s,d,tip,build])=>{
+  const cs = cats.split(' ');
+  ITEMS.push({id:'lw:'+en,kind:'word',en,fr,cats:cs,s,d,tip,build,units:UNITS.filter(u=>u.cats&&u.cats.some(c=>cs.includes(c))).map(u=>u.id)});
+});
+VOC.forEach(([en,fr,s,d])=>ITEMS.push({id:'voc:'+en,kind:'word',en,fr,cats:['voc'],s,d,units:['u7']}));
+GRAM.forEach(g=>ITEMS.push({id:'g:'+g.id,kind:'gram',g,units:['u5'],title:g.name}));
+METH.forEach(m=>ITEMS.push({id:'m:'+m.id,kind:'auth',title:m.title,ex:m.ex,units:['u6']}));
+LETTER.forEach(m=>ITEMS.push({id:'l:'+m.id,kind:'auth',title:m.title,ex:m.ex,units:['u7']}));
+EXPR.forEach(([en,fr,s,a,d,extra])=>ITEMS.push({id:'e:'+en,kind:'auth',title:en,units:['u7'],ex:[
+  {t:'build',q:'Traduis en anglais : « '+fr+' »',a:en,extra,why:'Expression utile pour une lettre formelle.'},
+  {t:'gap',s,a,d,why:fr+' → '+en}
+]}));
+const byId = Object.fromEntries(ITEMS.map(i=>[i.id,i]));
+const WORDS = ITEMS.filter(i=>i.kind==='word');
+
+/* =========================================================
+   ÉTAT & STOCKAGE (navigateur de l'élève)
+   ========================================================= */
+const KEY='writing-quest-v1';
+const DAY=86400000, MIN=60000;
+const INTERVALS=[10*MIN, 1*DAY, 2*DAY, 4*DAY, 8*DAY, 16*DAY, 35*DAY]; // répétition espacée
+const MAXLVL=6;
+let S = {srs:{}, xp:0, streak:0, lastDay:null, days:{}, sound:true, goal:40};
+try{ const raw=localStorage.getItem(KEY); if(raw) S=Object.assign(S,JSON.parse(raw)); }catch(e){}
+function save(){ try{ localStorage.setItem(KEY,JSON.stringify(S)); }catch(e){} }
+const dayKey = (d=new Date()) => d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+function curStreak(){ if(!S.lastDay) return 0; const t=dayKey(), y=dayKey(new Date(Date.now()-DAY)); return (S.lastDay===t||S.lastDay===y)?S.streak:0; }
+const rec = id => S.srs[id] || null;
+const lvl = id => (S.srs[id]?.lvl)||0;
+const isDue = id => { const r=rec(id); return r && r.due<=Date.now(); };
+function mastery(unitId){ const its=ITEMS.filter(i=>i.units.includes(unitId)); return its.reduce((a,i)=>a+lvl(i.id),0)/(its.length*MAXLVL); }
+function dueItems(){ return ITEMS.filter(i=>isDue(i.id)); }
+function grade(id, ok){
+  const r = S.srs[id] || {lvl:0,due:0,right:0,wrong:0,seen:0};
+  r.seen++; r.last=Date.now();
+  if(ok){ r.lvl=Math.min(MAXLVL,r.lvl+1); r.right++; r.due=Date.now()+INTERVALS[r.lvl]*(0.9+Math.random()*0.2); }
+  else { r.lvl=Math.max(0,r.lvl-2); r.wrong++; r.due=Date.now()+10*MIN; }
+  S.srs[id]=r;
+}
+
+/* =========================================================
+   OUTILS
+   ========================================================= */
+const $ = (s,el=document)=>el.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+const pick = a => a[Math.floor(Math.random()*a.length)];
+const sample = (a,n) => shuffle(a).slice(0,n);
+const unitOf = it => UNITS.find(u=>u.id===it.units[0]);
+const cap = w => w.charAt(0).toUpperCase()+w.slice(1);
+const low = w => w.charAt(0).toLowerCase()+w.slice(1);
+function fmtGap(word, atStart, keep){ if(keep) return word; return atStart?cap(word):low(word); }
+const sameFr = (a,b) => frParts(a.fr).some(p=>frParts(b.fr).includes(p));
+function lev(a,b){ const m=a.length,n=b.length; const d=Array.from({length:m+1},(_,i)=>[i]); for(let j=1;j<=n;j++)d[0][j]=j; for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1)); return d[m][n]; }
+
+let voices=[];
+function loadVoices(){ try{ voices=speechSynthesis.getVoices()||[]; }catch(e){} return voices; }
+loadVoices();
+try{ speechSynthesis.addEventListener('voiceschanged',()=>{ loadVoices(); if(TAB==='stats'&&!document.getElementById('lesson')) render(); }); }catch(e){}
+// voix britanniques de bonne qualité, par ordre de préférence (Edge, Chrome, Safari/iOS, Android)
+const PREF=[/Sonia.*Natural/i,/Libby.*Natural/i,/Ryan.*Natural/i,/Maisie.*Natural/i,/Thomas.*Natural/i,/Google UK English Female/i,/Google UK English Male/i,/Serena/i,/Daniel/i,/Kate/i,/Arthur/i,/Martha/i,/Stephanie/i,/Oliver/i,/Hazel/i,/George/i,/Susan/i];
+const isEn = v => /^en([-_]|$)/i.test(v.lang||'');
+function englishVoices(){ return loadVoices().filter(isEn).sort((a,b)=>(/GB/i.test(b.lang)-/GB/i.test(a.lang))||a.name.localeCompare(b.name)); }
+function bestVoice(){
+  const en=englishVoices(); if(!en.length) return null;
+  if(S.voice){ const v=en.find(v=>v.voiceURI===S.voice||v.name===S.voice); if(v) return v; }
+  const gb=en.filter(v=>/en[-_]GB/i.test(v.lang));
+  for(const re of PREF){ const v=gb.find(v=>re.test(v.name)); if(v) return v; }
+  return gb.find(v=>!v.localService) || gb[0] || en.find(v=>/en[-_](IE|AU|NZ)/i.test(v.lang)) || en.find(v=>/en[-_]US/i.test(v.lang)) || en[0];
+}
+function cleanSay(t){ return String(t).replace(/_{3}/g,' … ').replace(/\s*(\.\.\.|…)\s*(?=\w)/g,', ').replace(/(\.\.\.|…)/g,'').replace(/→/g,', ').replace(/\s+/g,' ').trim(); }
+// ---- audio pré-enregistré (voix britannique), puis synthèse du navigateur en secours ----
+const akey = t => cleanSay(String(t).replace(/_{3}/g,' ')).toLowerCase().replace(/[^a-z0-9']+/g,' ').trim();
+const clipCache={}; let clipSrc=null, clipCtx=null;
+function b64buf(b64){ const bin=atob(b64); const u=new Uint8Array(bin.length); for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i); return u.buffer; }
+async function playClip(k){
+  try{
+    clipCtx = clipCtx || new (window.AudioContext||window.webkitAudioContext)();
+    if(clipCtx.state==='suspended') await clipCtx.resume();
+    if(!clipCache[k]) clipCache[k] = await new Promise((res,rej)=>clipCtx.decodeAudioData(b64buf(window.WQ_AUDIO[k]),res,rej));
+    try{ if(clipSrc) clipSrc.stop(); }catch(e){}
+    try{ speechSynthesis.cancel(); }catch(e){}
+    const src=clipCtx.createBufferSource(); src.buffer=clipCache[k]; src.connect(clipCtx.destination); src.start(); clipSrc=src;
+    return true;
+  }catch(e){ return false; }
+}
+function speak(t){
+  const k=akey(t);
+  if(window.WQ_AUDIO && window.WQ_AUDIO[k]){ playClip(k).then(ok=>{ if(!ok) ttsSpeak(t); }); return; }
+  ttsSpeak(t);
+}
+function ttsSpeak(t,tries=0){
+  try{
+    if(!('speechSynthesis' in window)) return;
+    const v=bestVoice();
+    if(!v){ if(tries<4) return setTimeout(()=>ttsSpeak(t,tries+1),250);
+      if(!speak.warned){ speak.warned=1; toast('Aucune voix anglaise sur cet appareil : ajoute une voix « English (UK) » dans les réglages du système.'); }
+      return; } // jamais de lecture avec une voix française
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(cleanSay(t)); u.voice=v; u.lang=v.lang.replace('_','-'); u.rate=.9; u.pitch=1;
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+let actx=null;
+function beep(kind){
+  if(!S.sound) return;
+  try{ actx=actx||new (window.AudioContext||window.webkitAudioContext)(); const now=actx.currentTime;
+    const notes = kind==='ok'?[[660,0],[990,.09]] : kind==='win'?[[523,0],[659,.12],[784,.24],[1047,.36]] : kind==='tap'?[[420,0]] : [[220,0],[180,.12]];
+    notes.forEach(([f,t])=>{ const o=actx.createOscillator(), g=actx.createGain(); o.type=kind==='bad'?'triangle':'sine'; o.frequency.value=f;
+      g.gain.setValueAtTime(0.0001,now+t); g.gain.exponentialRampToValueAtTime(kind==='tap'?.05:.18,now+t+.02); g.gain.exponentialRampToValueAtTime(0.0001,now+t+(kind==='tap'?.06:.22));
+      o.connect(g).connect(actx.destination); o.start(now+t); o.stop(now+t+.3); });
+  }catch(e){}
+}
+function toast(msg){ const t=document.createElement('div'); t.className='toast'; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(),2200); }
+
+const MASCOT = (mood='happy') => `<svg class="mascot" viewBox="0 0 64 64" aria-hidden="true">
+  <rect x="4" y="14" width="34" height="36" rx="17" fill="none" stroke="var(--c1)" stroke-width="7"/>
+  <rect x="26" y="14" width="34" height="36" rx="17" fill="none" stroke="var(--c2)" stroke-width="7"/>
+  <rect x="4" y="14" width="34" height="36" rx="17" fill="none" stroke="var(--c1)" stroke-width="7" stroke-dasharray="40 200" stroke-dashoffset="-66"/>
+  <circle cx="18" cy="30" r="3.4" fill="var(--fg)"/><circle cx="46" cy="30" r="3.4" fill="var(--fg)"/>
+  ${mood==='happy'?'<path d="M24 39 q8 7 16 0" fill="none" stroke="var(--fg)" stroke-width="3" stroke-linecap="round"/>':'<path d="M25 41 q7 -4 14 0" fill="none" stroke="var(--fg)" stroke-width="3" stroke-linecap="round"/>'}
+</svg>`;
+const ringSVG = (pct,size,stroke,color,track='var(--surface2)') => { const r=(size-stroke)/2, c=2*Math.PI*r;
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}"><circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="${track}" stroke-width="${stroke}"/><circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="${color}" stroke-width="${stroke}" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-Math.max(0,Math.min(1,pct)))}"/></svg>`; };
+
+/* =========================================================
+   GÉNÉRATION DES EXERCICES
+   ========================================================= */
+function genEx(it, L){
+  if(L==null) L=lvl(it.id);
+  if(it.kind==='word') return genWord(it,L);
+  if(it.kind==='gram') return genGram(it,L);
+  const e = pick(it.ex); return Object.assign({}, e, {item:it});
+}
+function genWord(it,L){
+  const isLW = it.cats[0]!=='voc';
+  const pool=[];
+  pool.push('en2fr'); if(L>=1) pool.push('fr2en');
+  if(isLW) pool.push('cat');
+  if(it.s){ pool.push('gap','gap'); if(L>=2) pool.push('gap'); }
+  if(L>=2 && isLW) pool.push('type','type');
+  if(L>=3 && isLW) pool.push('type');
+  if(it.build) pool.push('build','build');
+  const t = pick(pool);
+  const peers = WORDS.filter(w=>w!==it && (w.cats[0]==='voc')===!isLW && !sameFr(w,it) && w.en!==it.en);
+  const catName = isLW ? CATS[it.cats[0]].fr : 'vocabulaire de la lettre';
+  if(t==='en2fr'){
+    const ds = sample(peers,3).map(w=>w.fr);
+    return {t:'mcq',item:it,q:`Que veut dire « ${it.en} » ?`,speakQ:it.en,opts:[it.fr,...ds],why:it.tip||'',say:it.s?fillGap(it.s,it.en):it.en};
+  }
+  if(t==='fr2en'){
+    const ds = sample(peers.filter(w=>!w.cats.some(c=>it.cats.includes(c))||!isLW),3).map(w=>w.en);
+    return {t:'mcq',item:it,q:`Comment dit-on « ${it.fr} » ?`,sub:catName,opts:[it.en,...ds],why:it.tip||'',say:it.en};
+  }
+  if(t==='cat'){
+    const right = pick(it.cats);
+    const ds = sample(Object.keys(CATS).filter(c=>!it.cats.includes(c)),3);
+    return {t:'mcq',item:it,q:`« ${it.en} » sert à exprimer…`,speakQ:it.en,opts:[right,...ds].map(c=>CATS[c].ic+'  '+CATS[c].fr),why:`${it.en} = ${it.fr}. ${it.tip||''}`,say:it.en};
+  }
+  if(t==='gap'){
+    return {t:'gap',item:it,s:it.s,a:it.en,d:it.d,why:`${it.en} = ${it.fr}. ${it.tip||''}`};
+  }
+  if(t==='type'){
+    const accept = WORDS.filter(w=>w.cats[0]!=='voc' && sameFr(w,it)).map(w=>w.en);
+    return {t:'type',item:it,q:`Écris en anglais : « ${it.fr} »`,sub:catName,a:it.en,accept,why:it.tip||'',say:it.s?fillGap(it.s,it.en):it.en};
+  }
+  if(t==='build'){
+    return {t:'build',item:it,q:`Traduis : « ${it.build.fr} »`,a:it.build.en,extra:it.build.extra,why:it.tip||''};
+  }
+}
+function genGram(it,L){
+  const g=it.g;
+  if(L>=1 && Math.random()<.3){
+    const others = sample(GRAM.filter(x=>x!==g),3).map(x=>x.name);
+    const sentence = Math.random()<.5? g.ex : fillGap(...(pick(g.gaps).slice(0,2)));
+    return {t:'mcq',item:it,q:'Quelle structure est utilisée ici ?',quote:sentence,speakQ:sentence,opts:[g.name,...others],why:g.fr,say:sentence};
+  }
+  const [s,a,d,why]=pick(g.gaps);
+  return {t:'gap',item:it,s,a,d,why:why+' ('+g.fr+')',keep:true};
+}
+function fillGap(s,w){ const atStart=s.trim().startsWith('___'); return s.replace('___',fmtGap(w,atStart)); }
+
+/* =========================================================
+   SÉANCES
+   ========================================================= */
+function buildSession(unitId){
+  const now=Date.now();
+  let pool = unitId ? ITEMS.filter(i=>i.units.includes(unitId)) : ITEMS;
+  const due = pool.filter(i=>isDue(i.id)).sort((a,b)=>rec(a.id).due-rec(b.id).due);
+  const fresh = pool.filter(i=>!rec(i.id));
+  const weak = pool.filter(i=>rec(i.id)&&!isDue(i.id)).sort((a,b)=>(lvl(a.id)-lvl(b.id))||(rec(a.id).last-rec(b.id).last));
+  const N = unitId?10:12;
+  let chosen = due.slice(0, unitId?7:N);
+  const nNew = unitId? Math.min(5, N-chosen.length) : Math.min(3, N-chosen.length);
+  chosen = chosen.concat(fresh.slice(0,Math.max(0,nNew)));
+  for(const w of weak){ if(chosen.length>=N) break; if(!chosen.includes(w)) chosen.push(w); }
+  for(const f of fresh){ if(chosen.length>=N) break; if(!chosen.includes(f)) chosen.push(f); }
+  // entrelacement : on mélange tout
+  chosen = shuffle(chosen);
+  const q = chosen.map(it=>({item:it, ex:genEx(it), first:true}));
+  // un jeu de paires au milieu (associations rapides)
+  const pw = (unitId? pool : ITEMS).filter(i=>i.kind==='word');
+  if(pw.length>=5){
+    const picked=[]; for(const w of shuffle(pw)){ if(picked.every(p=>!sameFr(p,w))) picked.push(w); if(picked.length===5) break; }
+    q.splice(Math.min(5,q.length), 0, {item:null, ex:{t:'pairs',words:picked}, first:false});
+  }
+  return q;
+}
+
+/* =========================================================
+   VUES — ACCUEIL
+   ========================================================= */
+let TAB='learn', FICHE='u1';
+function render(){
+  const app=$('#app');
+  const st=curStreak(), today=S.days[dayKey()]||0;
+  const top = `<div class="top">
+    <div class="brandname">${MASCOT().replace('class="mascot"','width="34" height="34"')}<span>Writing Quest<small>Anglais · Première C</small></span></div>
+    <div class="pill fire" title="Série de jours">🔥 ${st}</div>
+    <div class="pill xp" title="Points d'expérience">⭐ ${S.xp}</div>
+    <button class="iconbtn" id="snd" aria-label="Son">${S.sound?'🔊':'🔇'}</button>
+  </div>`;
+  let body='';
+  if(TAB==='learn') body=viewLearn(today);
+  if(TAB==='fiches') body=viewFiches();
+  if(TAB==='stats') body=viewStats();
+  app.innerHTML = `<div class="wrap">${top}${body}</div>
+   <nav class="tabs"><div>
+     <button data-tab="learn" class="${TAB==='learn'?'on':''}"><span>🗺️</span>Parcours</button>
+     <button data-tab="fiches" class="${TAB==='fiches'?'on':''}"><span>📒</span>Fiches</button>
+     <button data-tab="stats" class="${TAB==='stats'?'on':''}"><span>📈</span>Progrès</button>
+   </div></nav>`;
+  $('#snd').onclick=()=>{S.sound=!S.sound;save();render();};
+  app.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{TAB=b.dataset.tab;render();scrollTo(0,0);});
+  app.querySelectorAll('[data-unit]').forEach(b=>b.onclick=()=>openSheet(b.dataset.unit));
+  app.querySelectorAll('[data-fiche]').forEach(b=>b.onclick=()=>{FICHE=b.dataset.fiche;render();});
+  app.querySelectorAll('[data-say]').forEach(b=>b.onclick=e=>{e.stopPropagation();speak(b.dataset.say);});
+  const rv=$('#review'); if(rv) rv.onclick=()=>startLesson(null);
+}
+function weekStrip(){
+  const names=['L','M','M','J','V','S','D']; let out='';
+  for(let k=6;k>=0;k--){ const d=new Date(Date.now()-k*DAY); const key=dayKey(d); const on=(S.days[key]||0)>0;
+    out+=`<div><i class="${on?'on':''} ${k===0?'today':''}"></i>${names[(d.getDay()+6)%7]}</div>`; }
+  return `<div class="week">${out}</div>`;
+}
+function viewLearn(today){
+  const due=dueItems().length;
+  const pct=Math.min(1,today/S.goal);
+  const rec = UNITS.find(u=>mastery(u.id)<.5) || UNITS[0];
+  const nodes = UNITS.map(u=>{ const m=mastery(u.id); const n=ITEMS.filter(i=>i.units.includes(u.id)).length; const d=ITEMS.filter(i=>i.units.includes(u.id)&&isDue(i.id)).length;
+    return `<button class="node" data-unit="${u.id}" style="--uc:var(${u.c});--ucd:var(${u.c}d)">
+      <div class="bubble">${u===rec?'<span class="start-tag">À TOI !</span>':''}${ringSVG(m,84,7,`var(${u.c})`)}<div class="disc">${u.ic}</div></div>
+      <div class="lbl"><b>${esc(u.name)}</b><span>${esc(u.sub)}</span>${d?`<em>${d} à revoir</em>`:`<span>${n} notions · ${Math.round(m*100)} % maîtrisé</span>`}</div>
+    </button>`; }).join('');
+  return `
+  <div class="card goal">
+    <div class="ring">${ringSVG(pct,78,9,'var(--sun)')}<b>${Math.round(pct*100)}%</b></div>
+    <div><h2>${pct>=1?'Objectif du jour atteint !':'Objectif du jour'}</h2><p>${today} / ${S.goal} XP · environ 5 minutes</p>
+      <button class="btn" id="review">${due?`Révision du jour · ${due}`:'Entraînement libre'}</button></div>
+    ${weekStrip()}
+  </div>
+  <div class="section-title">Ton parcours</div>
+  <div class="path">${nodes}</div>
+  <div class="section-title">Pourquoi ça marche</div>
+  <div class="card science">
+    <div class="row"><div class="ic">📅</div><div><b>Répétition espacée</b><p>Chaque notion revient juste avant que tu l'oublies : 10 min, 1 j, 2 j, 4 j, 8 j, 16 j…</p></div></div>
+    <div class="row"><div class="ic">🧠</div><div><b>Rappel actif</b><p>Chercher la réponse dans ta tête grave le souvenir bien plus que relire la fiche.</p></div></div>
+    <div class="row"><div class="ic">🔀</div><div><b>Entrelacement</b><p>Les catégories sont mélangées : ton cerveau apprend à choisir le bon connecteur, pas juste à le reconnaître.</p></div></div>
+    <div class="row"><div class="ic">📈</div><div><b>Difficulté progressive</b><p>D'abord des choix, puis l'écriture de mémoire quand une notion est solide.</p></div></div>
+    <div class="row"><div class="ic">🔁</div><div><b>L'erreur, c'est utile</b><p>Une notion ratée revient quelques questions plus tard. Se tromper puis corriger renforce la mémoire.</p></div></div>
+  </div>`;
+}
+function openSheet(uid){
+  const u=UNITS.find(x=>x.id===uid); const m=mastery(uid); const n=ITEMS.filter(i=>i.units.includes(uid)).length;
+  const bg=document.createElement('div'); bg.className='sheet-bg';
+  bg.innerHTML=`<div class="sheet" style="--uc:var(${u.c});--ucd:var(${u.c}d)" role="dialog" aria-label="${esc(u.name)}">
+    <div class="hd"><div class="disc">${u.ic}</div><div><h2>${esc(u.name)}</h2><p>${n} notions · ${Math.round(m*100)} % maîtrisé</p></div></div>
+    <button class="btn" id="go" style="background:var(${u.c});box-shadow:0 4px 0 var(${u.c}d)">Commencer · 10 questions</button>
+    <button class="btn ghost" id="fi">Voir la fiche</button>
+  </div>`;
+  document.body.appendChild(bg);
+  bg.onclick=e=>{ if(e.target===bg) bg.remove(); };
+  $('#go',bg).onclick=()=>{bg.remove();startLesson(uid);};
+  $('#fi',bg).onclick=()=>{bg.remove();TAB='fiches';FICHE=uid;render();scrollTo(0,0);};
+}
+
+/* ---- Fiches ---- */
+function lvlBars(id){ const l=lvl(id); let o='<div class="lvl" title="Maîtrise">'; for(let i=1;i<=MAXLVL;i++) o+=`<s class="${i<=l?'on':''}"></s>`; return o+'</div>'; }
+function viewFiches(){
+  const u=UNITS.find(x=>x.id===FICHE);
+  const chips = UNITS.map(x=>`<button class="chip ${x.id===FICHE?'on':''}" data-fiche="${x.id}" style="--uc:var(${x.c})">${x.ic} ${esc(x.short)}</button>`).join('');
+  let content='';
+  if(u.cats){
+    content = u.cats.map(c=>{ const ws=WORDS.filter(w=>w.cats.includes(c));
+      return `<div class="fgroup"><h3><i>${CATS[c].ic}</i>${CATS[c].fr} <span class="muted" style="font-size:14px">· ${CATS[c].en}</span></h3><div class="fl">${
+        ws.map(w=>{ const ex = w.s?fillGap(w.s,w.en):(w.build?w.build.en:'');
+          return `<div class="fitem"><div><div class="en">${esc(w.en)}</div><div class="fr">${esc(w.fr)}</div></div><div style="display:flex;gap:8px;align-items:center">${lvlBars(w.id)}<button class="say" data-say="${esc(ex||w.en)}" aria-label="Écouter">🔊</button></div>${ex?`<div class="exs">${esc(ex)}</div>`:''}${w.tip?`<div class="tip">💡 ${esc(w.tip)}</div>`:''}</div>`; }).join('')
+      }</div></div>`; }).join('');
+  } else if(u.id==='u5'){
+    content = `<div class="fgroup"><div class="fl">${GRAM.map(g=>`<div class="fitem"><div><div class="en">${esc(g.name)}</div><div class="fr">${esc(g.fr)}</div></div><div style="display:flex;gap:8px;align-items:center">${lvlBars('g:'+g.id)}<button class="say" data-say="${esc(g.ex)}" aria-label="Écouter">🔊</button></div><div class="exs">${esc(g.ex)}</div>${g.gaps.map(x=>`<div class="exs" style="font-style:normal;opacity:.7">→ ${esc(fillGapKeep(x[0],x[1]))}</div>`).join('')}</div>`).join('')}</div></div>`;
+  } else if(u.id==='u6'){
+    content = `<div class="fgroup"><h3><i>🪜</i>Les 7 étapes</h3><div class="fl">${STEPS7.map((s,i)=>`<div class="fitem"><div><div class="en">${i+1}. ${esc(s)}</div></div></div>`).join('')}</div></div>
+    <div class="fgroup"><h3><i>⭐</i>Règle d'or</h3><div class="fitem"><div class="en">Think → Plan → Draft → Correct → Copy → Check</div><button class="say" data-say="Think, plan, draft, correct, copy, check." aria-label="Écouter">🔊</button><div class="exs">Comme un architecte : d'abord un plan, ensuite la construction, puis les finitions.</div></div></div>
+    <div class="fgroup"><h3><i>📐</i>Plans types</h3><div class="fl">
+      <div class="fitem"><div><div class="en">Texte argumentatif</div><div class="fr">Introduction · Argument 1 · Argument 2 · Contre-argument éventuel · Conclusion</div></div></div>
+      <div class="fitem"><div><div class="en">Récit</div><div class="fr">Situation initiale · Événement déclencheur · Développement · Dénouement</div></div></div>
+      <div class="fitem"><div><div class="en">Lettre ou discours</div><div class="fr">Introduction · Développement en 2 ou 3 parties · Conclusion</div></div></div></div></div>
+    <div class="fgroup"><h3><i>🔎</i>Check-list de relecture</h3><div class="fl">
+      <div class="fitem"><div><div class="en">1re relecture : la langue</div><div class="fr">Verbes (temps, accords) · a / an / the, pluriels · prépositions (interested in, depend on, good at) · structures complexes · faux amis, répétitions, mots français oubliés</div></div></div>
+      <div class="fitem"><div><div class="en">2e relecture : la ponctuation</div><div class="fr">Majuscules · points · virgules · apostrophes (don't, didn't, I'd rather) · paragraphes séparés. Puis recopier sans corriger au fil de la copie.</div></div></div>
+      <div class="fitem"><div><div class="en">Dernière question</div><div class="fr">If I were the examiner, would I understand my text easily?</div></div><button class="say" data-say="If I were the examiner, would I understand my text easily?" aria-label="Écouter">🔊</button></div></div></div>`;
+  } else {
+    const hl = t => esc(t).replace(/\b(However|As a result|Today|Unfortunately|For these reasons|Such a decision|It would also|Instead|Thank you)\b/g,'<mark>$1</mark>');
+    const letter=[
+      'Dear Prime Minister Burnham,',
+      'I am writing to you as a member of the Catholic community in Northern Ireland. Many residents of the Garvaghy Road area are worried about the planned Orange Order march.',
+      'We fully respect the right of people to celebrate their traditions and express their culture. However, this march is seen by many local people as unwanted and divisive. For years, the Garvaghy Road has been a mainly nationalist and Catholic area. As a result, many residents believe that allowing the march to pass through their neighbourhood could increase tensions between communities.',
+      'Northern Ireland has made great progress since the Good Friday Agreement. Today, most people want to live together peacefully and focus on building a better future. Unfortunately, this march risks reopening old wounds and creating conflict where there should be understanding and respect.',
+      'The police have already warned that the march could lead to disorder and violence. Many people are afraid that protests and counter-protests could damage community relations. We believe that public safety and social harmony should be the priority.',
+      'For these reasons, we kindly ask you to speak with Unionist leaders and encourage them to cancel the march or choose a different route. Such a decision would show goodwill and respect for local residents. It would also send a strong message that peace and dialogue are more important than political confrontation.',
+      'We are not asking anyone to give up their traditions. Instead, we hope for a solution that respects both communities. Mutual respect is essential if we want to continue building a peaceful and shared future for everyone in Northern Ireland.',
+      'Thank you for taking the time to read this letter. We hope that you will consider our concerns and help prevent further tensions.',
+      'Yours sincerely,<br>A concerned Catholic resident of Northern Ireland'];
+    content = `<div class="fgroup"><h3><i>💬</i>Expressions utiles</h3><div class="fl">${EXPR.map(e=>`<div class="fitem"><div><div class="en">${esc(e[0])}</div><div class="fr">${esc(e[1])}</div></div><div style="display:flex;gap:8px;align-items:center">${lvlBars('e:'+e[0])}<button class="say" data-say="${esc(e[0])}" aria-label="Écouter">🔊</button></div></div>`).join('')}</div></div>
+    <div class="fgroup"><h3><i>📖</i>Vocabulaire de la lettre</h3><div class="fl">${VOC.map(v=>`<div class="fitem"><div><div class="en">${esc(v[0])}</div><div class="fr">${esc(v[1])}</div></div><div style="display:flex;gap:8px;align-items:center">${lvlBars('voc:'+v[0])}<button class="say" data-say="${esc(fillGap(v[2],v[0]))}" aria-label="Écouter">🔊</button></div><div class="exs">${esc(fillGap(v[2],v[0]))}</div></div>`).join('')}</div></div>
+    <div class="fgroup"><h3><i>🗂️</i>Le plan de la lettre</h3><div class="fl">${LETTER_PARTS.map((p,i)=>`<div class="fitem"><div class="en">${i+1}. ${esc(p)}</div></div>`).join('')}</div></div>
+    <div class="fgroup"><h3><i>✉️</i>La lettre modèle</h3><p class="muted" style="margin:0 0 8px;font-weight:700;font-size:14px">Sujet : en tant que membre de la communauté catholique de Portadown, écris au Premier ministre pour demander l'annulation de la marche de l'Ordre d'Orange (350 mots). Les connecteurs sont surlignés.</p>
+      <div class="letter">${letter.map(p=>`<p>${p.includes('<br>')?p.split('<br>').map(esc).join('<br>'):hl(p)}</p>`).join('')}<button class="btn ghost" data-say="${esc(letter.join(' ').replace('<br>',' '))}">🔊 Écouter la lettre</button></div></div>`;
+  }
+  return `<div class="chips">${chips}</div><div style="--uc:var(${u.c})">${content}</div>`;
+}
+function fillGapKeep(s,w){ return s.replace('___',w); }
+
+/* ---- Stats ---- */
+function viewStats(){
+  const seen=Object.keys(S.srs).filter(k=>byId[k]).length;
+  const solid=ITEMS.filter(i=>lvl(i.id)>=4).length;
+  const weak = Object.entries(S.srs).filter(([k,r])=>byId[k]&&r.wrong>0).sort((a,b)=>(b[1].wrong-b[1].right)-(a[1].wrong-a[1].right)).slice(0,6);
+  const nameOf = it => it.kind==='word'? `${it.en} — ${it.fr}` : (it.title||it.g?.name);
+  return `<div class="tiles" style="margin-top:4px">
+    <div class="tile" style="--tc:var(--flame)"><b style="color:var(--flame)">${curStreak()}</b><span>jours de suite</span></div>
+    <div class="tile"><b>${seen}<small style="font-size:14px" class="muted">/${ITEMS.length}</small></b><span>notions vues</span></div>
+    <div class="tile"><b style="color:var(--ok)">${solid}</b><span>bien ancrées</span></div>
+  </div>
+  <div class="section-title">Maîtrise par unité</div>
+  <div class="card bars">${UNITS.map(u=>{const m=mastery(u.id);return `<div class="bar" style="--uc:var(${u.c})"><div class="disc" style="width:34px;height:32px;font-size:16px;box-shadow:0 3px 0 var(${u.c}d)">${u.ic}</div><div style="min-width:0"><div class="t">${esc(u.name)}</div><div class="track"><i style="width:${Math.max(2,m*100)}%"></i></div></div><div class="pc">${Math.round(m*100)}%</div></div>`;}).join('')}</div>
+  <div class="section-title">À retravailler</div>
+  <div class="card">${weak.length?`<div class="fl">${weak.map(([k,r])=>`<div style="display:flex;justify-content:space-between;gap:10px;font-weight:800"><span style="min-width:0">${esc(nameOf(byId[k]))}</span><span class="muted" style="flex:none">${r.wrong} ✗ · ${r.right} ✓</span></div>`).join('')}</div>`:'<p class="muted" style="margin:0;font-weight:700">Rien pour l\'instant. Fais quelques leçons et tes points faibles apparaîtront ici, puis reviendront plus souvent dans tes révisions.</p>'}</div>
+  <div class="section-title">Réglages</div>
+  <div class="card" style="display:grid;gap:10px">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;font-weight:800">Objectif quotidien
+      <div style="display:flex;gap:6px">${[20,40,60].map(g=>`<button class="chip ${S.goal===g?'on':''}" style="--uc:var(--brand)" data-goal="${g}">${g} XP</button>`).join('')}</div></div>
+    <div style="display:grid;gap:8px;font-weight:800"><label for="voice">Voix anglaise</label>
+      <div style="display:flex;gap:8px"><select id="voice" class="typein" style="font-size:15px;padding:10px;flex:1;min-width:0">${voiceOptions()}</select><button class="say" id="vtest" style="width:46px;height:46px" aria-label="Tester la voix">🔊</button></div>
+      <span class="muted" style="font-size:13px;font-weight:700">Toutes les phrases du cours sont pré-enregistrées avec une voix britannique. La voix choisie ici ne sert qu’en secours, pour un texte non enregistré.</span></div>
+    <button class="btn ghost" id="reset" style="font-size:13px">Remettre la progression à zéro</button>
+  </div>
+  <div class="section-title">Sauvegarde</div>
+  <div class="card" style="display:grid;gap:12px">
+    <p class="muted" style="margin:0;font-weight:700;font-size:14px">Ta progression est enregistrée dans ce navigateur. Pour la retrouver ailleurs (autre appareil, version en ligne), exporte-la ici puis importe-la là-bas.</p>
+    <button class="btn" id="exp">Exporter ma progression</button>
+    <div id="expbox" hidden style="display:grid;gap:8px">
+      <label for="expcode" style="font-weight:800;font-size:14px">Ton code de sauvegarde</label>
+      <textarea id="expcode" class="typein" readonly rows="4" style="font-size:12px;font-family:ui-monospace,Menlo,monospace;resize:vertical"></textarea>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn ghost" id="copy" style="flex:1;font-size:13px">Copier le code</button><button class="btn ghost" id="dl" style="flex:1;font-size:13px" ${window.top!==window?'hidden':''}>Télécharger le fichier</button></div>
+    </div>
+    <label for="impcode" style="font-weight:800;font-size:14px">Importer une sauvegarde</label>
+    <textarea id="impcode" class="typein" rows="3" placeholder="Colle ici ton code de sauvegarde" style="font-size:12px;font-family:ui-monospace,Menlo,monospace;resize:vertical"></textarea>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn" id="imp" style="flex:1">Importer</button>
+      <label class="btn ghost" for="impfile" style="flex:1;text-align:center;font-size:13px;display:grid;place-items:center;cursor:pointer">Choisir un fichier</label>
+      <input type="file" id="impfile" accept=".json,.txt,application/json,text/plain" hidden>
+    </div>
+  </div>`;
+}
+document.addEventListener('click',e=>{
+  const g=e.target.closest('[data-goal]'); if(g){S.goal=+g.dataset.goal;save();render();}
+  const r=e.target.closest('#reset'); if(r){ if(r.dataset.armed){ S={srs:{},xp:0,streak:0,lastDay:null,days:{},sound:S.sound,goal:S.goal}; save(); render(); toast('Progression remise à zéro'); } else { r.dataset.armed=1; r.textContent='Appuie encore pour confirmer'; r.classList.add('bad'); } }
+});
+
+function voiceOptions(){ const en=englishVoices(); if(!en.length) return '<option>Aucune voix anglaise trouvée</option>'; const cur=bestVoice();
+  return en.map(v=>`<option value="${esc(v.voiceURI)}" ${cur&&v.voiceURI===cur.voiceURI?'selected':''}>${esc(v.name)} (${esc(v.lang)})</option>`).join(''); }
+document.addEventListener('change',e=>{ if(e.target.id==='voice'){ S.voice=e.target.value; save(); speak('Moreover, the march should be cancelled.'); } });
+document.addEventListener('click',e=>{ if(e.target.closest('#vtest')) speak('However, mutual respect is essential for a peaceful future.'); });
+
+/* ---- export / import ---- */
+function exportCode(){ const data={app:'writing-quest',v:1,exportedAt:new Date().toISOString(),state:S};
+  return 'WQ1:'+btoa(unescape(encodeURIComponent(JSON.stringify(data)))); }
+function parseBackup(txt){
+  txt=String(txt||'').trim(); if(!txt) throw new Error('vide');
+  let obj;
+  if(txt.startsWith('WQ1:')) obj=JSON.parse(decodeURIComponent(escape(atob(txt.slice(4).replace(/\s+/g,'')))));
+  else obj=JSON.parse(txt);
+  const st = obj && obj.state ? obj.state : obj;
+  if(!st || typeof st.srs!=='object') throw new Error('format');
+  return st;
+}
+function mergeState(inc){
+  let n=0;
+  for(const [id,r] of Object.entries(inc.srs||{})){ const mine=S.srs[id]; if(!mine || (r.last||0)>(mine.last||0)){ S.srs[id]=r; n++; } }
+  for(const [d,x] of Object.entries(inc.days||{})) S.days[d]=Math.max(S.days[d]||0,x||0);
+  S.xp=Math.max(S.xp||0,inc.xp||0);
+  if(inc.lastDay && (!S.lastDay || inc.lastDay>S.lastDay || (inc.lastDay===S.lastDay && (inc.streak||0)>(S.streak||0)))){ S.lastDay=inc.lastDay; S.streak=inc.streak||0; }
+  if(inc.goal) S.goal=inc.goal;
+  return n;
+}
+function doImport(txt){
+  try{ const st=parseBackup(txt); const n=mergeState(st); save(); render(); toast(`Progression importée : ${n} notion${n>1?'s':''} mise${n>1?'s':''} à jour`); }
+  catch(e){ toast('Code non reconnu : colle le code complet qui commence par WQ1:'); }
+}
+document.addEventListener('click',e=>{
+  if(e.target.closest('#exp')){ const box=$('#expbox'); box.hidden=false; const ta=$('#expcode'); ta.value=exportCode(); ta.focus(); ta.select(); }
+  if(e.target.closest('#copy')){ const ta=$('#expcode'); const done=()=>toast('Code copié'); 
+    try{ navigator.clipboard.writeText(ta.value).then(done,()=>{ ta.focus(); ta.select(); toast('Sélectionne le code puis copie-le (Cmd/Ctrl + C)'); }); }catch(err){ ta.focus(); ta.select(); toast('Sélectionne le code puis copie-le (Cmd/Ctrl + C)'); } }
+  if(e.target.closest('#dl')){ try{ const blob=new Blob([JSON.stringify({app:'writing-quest',v:1,exportedAt:new Date().toISOString(),state:S},null,1)],{type:'application/json'});
+    const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='writing-quest-sauvegarde-'+dayKey()+'.json'; document.body.appendChild(a); a.click(); a.remove(); }catch(err){} }
+  if(e.target.closest('#imp')) doImport($('#impcode').value);
+});
+document.addEventListener('change',e=>{ if(e.target.id==='impfile' && e.target.files[0]){ const r=new FileReader(); r.onload=()=>doImport(r.result); r.readAsText(e.target.files[0]); } });
+
+/* =========================================================
+   LEÇON
+   ========================================================= */
+let L=null;
+const PRAISE=['Excellent !','Bravo !','Parfait !','Bien joué !','Super !','Yes!','Nickel !','Impeccable !','Brilliant!'];
+const SOFT=['Pas encore…','Presque !','On y est presque','Bonne tentative'];
+const GROWTH=['Cette notion reviendra bientôt : c\'est comme ça qu\'on l\'ancre.','Se tromper puis corriger, c\'est ce qui fixe le souvenir.','Normal de bloquer : ton cerveau est en train d\'apprendre.','On la revoit dans quelques questions.'];
+
+function startLesson(unitId){
+  L={unit:unitId, q:buildSession(unitId), i:0, xp:0, combo:0, maxCombo:0, ok:0, answered:0, start:Date.now(), retries:{}};
+  const u = unitId?UNITS.find(x=>x.id===unitId):null;
+  const el=document.createElement('div'); el.className='lesson'; el.id='lesson';
+  el.style.setProperty('--uc', u?`var(${u.c})`:'var(--brand)');
+  el.innerHTML=`<div class="lhead"><button class="close" id="quit" aria-label="Quitter">✕</button><div class="prog"><i id="pg"></i></div><div class="combo" id="combo"></div></div>
+   <div class="lbody"><div class="lin" id="ex"></div></div>
+   <div class="lfoot" id="foot"><div class="in">
+     <div class="fb" id="fb"></div>
+     <button class="btn" id="act" disabled>Vérifier</button>
+   </div></div>`;
+  document.body.appendChild(el); document.body.style.overflow='hidden';
+  $('#quit').onclick=endEarly;
+  showEx();
+}
+function endEarly(){ closeLesson(); render(); }
+function closeLesson(){ const l=$('#lesson'); if(l) l.remove(); document.body.style.overflow=''; try{speechSynthesis.cancel();}catch(e){} }
+
+let cur=null; // {check:()=>({ok, answer}), ready}
+function setReady(v){ const b=$('#act'); b.disabled=!v; }
+function showEx(){
+  const ent=L.q[L.i]; const ex=ent.ex; const it=ent.item;
+  $('#pg').style.width=(L.i/L.q.length*100)+'%';
+  $('#combo').textContent = L.combo>=3?`🔥 ×${L.combo}`:'';
+  const foot=$('#foot'); foot.className='lfoot'; $('#fb').innerHTML='';
+  const act=$('#act'); act.textContent='Vérifier'; act.className='btn'; act.disabled=true; act.hidden=false;
+  act.onclick=doCheck;
+  const box=$('#ex');
+  const u = it?unitOf(it):null;
+  box.style.setProperty('--uc', it? `var(${(it.kind==='word'&&L.unit? UNITS.find(x=>x.id===L.unit):u).c})` : 'var(--c4)');
+  const isNew = it && !rec(it.id);
+  const kickerTxt = {mcq:'Choisis la bonne réponse',gap:'Complète la phrase',type:'Écris de mémoire',build:'Construis la phrase',order:'Remets dans l\'ordre',tf:'Vrai ou faux ?',pairs:'Associe les paires'}[ex.t];
+  let h=`<div class="kicker">${kickerTxt}${isNew?'<span class="new">NOUVEAU</span>':''}</div>`;
+  cur={};
+  if(ex.t==='mcq'){
+    const right=ex.opts[0]; const opts=shuffle(ex.opts);
+    h+=`<div class="qrow">${MASCOT()}<div class="speech"><span>${esc(ex.q)}${ex.sub?`<br><small class="muted" style="font-weight:700">(${esc(ex.sub)})</small>`:''}</span>${ex.speakQ?`<button class="say" data-say="${esc(ex.speakQ)}" aria-label="Écouter">🔊</button>`:''}</div></div>
+      ${ex.quote?`<div class="sentence"><span>${esc(ex.quote)}</span></div>`:''}
+      <div class="opts">${opts.map((o,i)=>`<button class="opt" data-i="${i}"><kbd>${i+1}</kbd><span>${esc(o)}</span></button>`).join('')}</div>`;
+    box.innerHTML=h; let sel=-1;
+    box.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{ sel=+b.dataset.i; box.querySelectorAll('.opt').forEach(x=>x.classList.toggle('sel',x===b)); beep('tap'); setReady(true); if(/[a-z]/i.test(opts[sel])&&ex.say===opts[sel]) speak(opts[sel]); });
+    cur.keys=n=>{ const b=box.querySelector(`.opt[data-i="${n}"]`); if(b) b.click(); };
+    cur.check=()=>{ const ok=opts[sel]===right; box.querySelectorAll('.opt').forEach((x,i)=>{ x.disabled=true; if(opts[i]===right) x.classList.add('right'); else if(i===sel) x.classList.add('wrong'); }); return {ok, answer:right}; };
+  }
+  else if(ex.t==='gap'){
+    const atStart=ex.s.trim().startsWith('___');
+    const opts=shuffle([ex.a,...ex.d]);
+    const show = w => fmtGap(w,atStart,ex.keep);
+    const [pre,post]=ex.s.split('___');
+    h+=`<div class="sentence"><span>${esc(pre)}<span class="blank" id="blank">&nbsp;</span>${esc(post)}</span><button class="say" data-say="${esc(ex.s)}" aria-label="Écouter">🔊</button></div>
+      <div class="opts two">${opts.map((o,i)=>`<button class="opt" data-i="${i}"><kbd>${i+1}</kbd><span>${esc(show(o))}</span></button>`).join('')}</div>`;
+    box.innerHTML=h; let sel=-1;
+    box.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{ sel=+b.dataset.i; box.querySelectorAll('.opt').forEach(x=>x.classList.toggle('sel',x===b)); $('#blank').textContent=show(opts[sel]); beep('tap'); setReady(true); });
+    cur.keys=n=>{ const b=box.querySelector(`.opt[data-i="${n}"]`); if(b) b.click(); };
+    ex.say = ex.s.replace('___',show(ex.a));
+    cur.check=()=>{ const ok=opts[sel]===ex.a; box.querySelectorAll('.opt').forEach((x,i)=>{ x.disabled=true; if(opts[i]===ex.a) x.classList.add('right'); else if(i===sel) x.classList.add('wrong'); }); $('#blank').textContent=show(ex.a); return {ok, answer:show(ex.a)}; };
+  }
+  else if(ex.t==='type'){
+    h+=`<div class="qrow">${MASCOT()}<div class="speech"><span>${esc(ex.q)}${ex.sub?`<br><small class="muted" style="font-weight:700">(${esc(ex.sub)})</small>`:''}</span></div></div>
+      <input class="typein" id="tin" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Tape ta réponse en anglais">
+      <button class="hintbtn" id="hint">Un indice ?</button>`;
+    box.innerHTML=h; const inp=$('#tin'); setTimeout(()=>inp.focus(),50);
+    inp.oninput=()=>setReady(inp.value.trim().length>0);
+    inp.onkeydown=e=>{ if(e.key==='Enter'&&inp.value.trim()){ e.preventDefault(); e.stopPropagation(); $('#act').click(); } };
+    let hints=0; L.hinted=false;
+    $('#hint').onclick=()=>{ hints++; L.hinted=true; const n=Math.min(ex.a.length, hints*2); const nw=ex.a.split(' ').length; $('#hint').textContent='Indice : '+ex.a.slice(0,n)+'…  ('+nw+' mot'+(nw>1?'s':'')+')'; };
+    cur.check=()=>{ inp.disabled=true; const v=norm(inp.value); const acc=(ex.accept||[ex.a]).map(norm);
+      if(acc.includes(v)) return {ok:true, answer:ex.a, extra: ex.accept&&ex.accept.length>1?'Autres réponses possibles : '+ex.accept.filter(a=>norm(a)!==v).join(', '):''};
+      const close=acc.find(a=>a.length>=5 && lev(a,v)<=1);
+      if(close) return {ok:true, answer:ex.a, extra:'Attention à l\'orthographe : '+(ex.accept||[ex.a]).find(a=>norm(a)===close)};
+      return {ok:false, answer:ex.a}; };
+  }
+  else if(ex.t==='build' || ex.t==='order'){
+    const isOrder=ex.t==='order';
+    const target = isOrder? ex.items : ex.a.split(' ');
+    const tiles = shuffle((isOrder?target:target.concat(ex.extra||[])).map((w,i)=>({w,id:i})));
+    h+=`<div class="qrow">${MASCOT()}<div class="speech"><span>${esc(ex.q)}</span></div></div>
+      <div class="answerline ${isOrder?'col':''}" id="ans"></div>
+      <div class="bank ${isOrder?'col':''}" id="bank">${tiles.map(t=>`<button class="tok" data-id="${t.id}">${esc(t.w)}</button>`).join('')}</div>`;
+    box.innerHTML=h; const chosen=[];
+    const draw=()=>{ $('#ans').innerHTML=chosen.map((t,k)=>`<button class="tok" data-k="${k}">${isOrder?`<span class="n">${k+1}</span>`:''}${esc(t.w)}</button>`).join('');
+      box.querySelectorAll('#bank .tok').forEach(b=>b.classList.toggle('used',chosen.some(c=>c.id==b.dataset.id)));
+      $('#ans').querySelectorAll('.tok').forEach(b=>b.onclick=()=>{ chosen.splice(+b.dataset.k,1); beep('tap'); draw(); });
+      setReady(isOrder? chosen.length===target.length : chosen.length>0); };
+    box.querySelectorAll('#bank .tok').forEach(b=>b.onclick=()=>{ if(b.classList.contains('used'))return; chosen.push(tiles.find(t=>t.id==b.dataset.id)); beep('tap'); draw(); });
+    draw();
+    if(!isOrder) ex.say=ex.a;
+    cur.check=()=>{ box.querySelectorAll('.tok').forEach(b=>b.disabled=true); const got=chosen.map(c=>c.w).join(' | '); const ok=got===target.join(' | ');
+      return {ok, answer: isOrder? target.map((t,i)=>(i+1)+'. '+t).join('  ') : ex.a}; };
+  }
+  else if(ex.t==='tf'){
+    h+=`<div class="qrow">${MASCOT()}<div class="speech"><span>${esc(ex.q)}</span></div></div>
+      <div class="opts two"><button class="opt big" data-v="1"><span>👍 Vrai</span></button><button class="opt big" data-v="0"><span>👎 Faux</span></button></div>`;
+    box.innerHTML=h; let sel=null;
+    box.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{ sel=b.dataset.v==='1'; box.querySelectorAll('.opt').forEach(x=>x.classList.toggle('sel',x===b)); beep('tap'); setReady(true); });
+    cur.keys=n=>{ const b=box.querySelectorAll('.opt')[n]; if(b) b.click(); };
+    cur.check=()=>{ const ok=sel===ex.a; box.querySelectorAll('.opt').forEach(x=>{ x.disabled=true; const v=x.dataset.v==='1'; if(v===ex.a) x.classList.add('right'); else if(v===sel) x.classList.add('wrong'); }); return {ok, answer: ex.a?'Vrai':'Faux'}; };
+  }
+  else if(ex.t==='pairs'){
+    const ws=ex.words; const left=shuffle(ws), right=shuffle(ws);
+    h+=`<div class="qrow">${MASCOT()}<div class="speech"><span>Touche un mot anglais puis sa traduction.</span></div></div>
+      <div class="pairs"><div class="col">${left.map(w=>`<button class="pair" data-side="en" data-id="${esc(w.id)}">${esc(w.en)}</button>`).join('')}</div>
+      <div class="col">${right.map(w=>`<button class="pair" data-side="fr" data-id="${esc(w.id)}">${esc(w.fr)}</button>`).join('')}</div></div>`;
+    box.innerHTML=h; $('#act').hidden=true;
+    let selEl=null, done=0, errs=0;
+    box.querySelectorAll('.pair').forEach(b=>b.onclick=()=>{
+      if(b.dataset.side==='en') speak(b.textContent);
+      if(!selEl || selEl.dataset.side===b.dataset.side){ if(selEl) selEl.classList.remove('sel'); selEl=b; b.classList.add('sel'); beep('tap'); return; }
+      if(selEl.dataset.id===b.dataset.id){ selEl.classList.remove('sel'); selEl.classList.add('done'); b.classList.add('done'); done++; beep('ok'); selEl=null;
+        if(done===ws.length){ cur.result={ok:errs<=1, pairs:true, errs}; setTimeout(()=>doCheck(),350); } }
+      else { const a=selEl, c=b; a.classList.add('err'); c.classList.add('err'); errs++; beep('bad'); setTimeout(()=>{a.classList.remove('err','sel');c.classList.remove('err');},400); selEl=null; }
+    });
+    cur.check=()=>cur.result;
+  }
+  // boutons 🔊 dans la question
+  box.querySelectorAll('[data-say]').forEach(b=>b.onclick=e=>{e.stopPropagation();speak(b.dataset.say);});
+  if(ex.speakQ && (ex.t==='mcq')) setTimeout(()=>speak(ex.speakQ),250);
+}
+function doCheck(){
+  const ent=L.q[L.i]; const ex=ent.ex; const it=ent.item;
+  const res=cur.check(); if(!res) return;
+  const ok=res.ok;
+  // XP & SRS
+  if(ex.t==='pairs'){ if(ok){ L.xp+=10; } ex.words.forEach(w=>{ if(!rec(w.id)) return; }); }
+  else {
+    L.answered++;
+    if(ent.first){ grade(it.id, ok && !(ex.t==='type'&&L.hinted)); }
+    if(ok){ L.ok++; L.combo++; L.maxCombo=Math.max(L.maxCombo,L.combo); L.xp += ent.first?10:5; if(L.combo>0&&L.combo%5===0) L.xp+=5; }
+    else { L.combo=0;
+      L.retries[it.id]=(L.retries[it.id]||0)+1;
+      if(L.retries[it.id]<=2){ const pos=Math.min(L.q.length, L.i+3); L.q.splice(pos,0,{item:it, ex:genEx(it, Math.max(0,lvl(it.id)-1)), first:false}); }
+    }
+  }
+  beep(ok?'ok':'bad');
+  const foot=$('#foot'); foot.className='lfoot '+(ok?'ok':'bad');
+  const say = ex.say;
+  let title, line='';
+  if(ex.t==='pairs'){ title= ok? (res.errs?'Bien joué !':'Sans faute !') : 'Paires terminées'; line = res.errs? `${res.errs} erreur${res.errs>1?'s':''} en route.` : 'Associations rapides = mémoire solide.'; }
+  else if(ok){ title=pick(PRAISE); if(L.combo>=3) title+=` 🔥 ${L.combo} d'affilée`; line = res.extra||''; }
+  else { title=pick(SOFT); line = `Bonne réponse : <b>${esc(res.answer)}</b>`; }
+  const why = ex.why ? `<p class="why">${esc(ex.why)}</p>` : '';
+  const growth = (!ok && ex.t!=='pairs')? `<p class="why">💪 ${pick(GROWTH)}</p>`:'';
+  $('#fb').innerHTML=`<div class="badge">${ok?'✅':'💡'}</div><div class="fbtext"><h3>${title}</h3>${line?`<p>${ok?esc(line):line}</p>`:''}${why}${growth}</div>${say?`<button class="say" id="fbsay" aria-label="Écouter">🔊</button>`:''}`;
+  if(say){ $('#fbsay').onclick=()=>speak(say); if(ok) setTimeout(()=>speak(say),150); }
+  const act=$('#act'); act.hidden=false; act.disabled=false; act.textContent='Continuer'; act.className='btn '+(ok?'ok':'bad');
+  act.onclick=next; setTimeout(()=>act.focus(),30);
+  $('#combo').textContent = L.combo>=3?`🔥 ×${L.combo}`:'';
+  save();
+}
+function next(){
+  L.i++;
+  if(L.i>=L.q.length) return finish();
+  showEx(); $('.lbody').scrollTop=0;
+}
+function finish(){
+  $('#pg').style.width='100%';
+  const t=dayKey(), y=dayKey(new Date(Date.now()-DAY));
+  if(S.lastDay!==t){ S.streak = (S.lastDay===y)? (S.streak||0)+1 : 1; S.lastDay=t; }
+  S.xp+=L.xp; S.days[t]=(S.days[t]||0)+L.xp; save();
+  const acc = L.answered? Math.round(L.ok/L.answered*100):100;
+  const secs=Math.round((Date.now()-L.start)/1000); const mm=Math.floor(secs/60), ss=String(secs%60).padStart(2,'0');
+  const goalHit = S.days[t]>=S.goal && (S.days[t]-L.xp)<S.goal;
+  const msg = acc>=90? 'Ton cerveau a bien bossé. Les notions reviendront au bon moment pour s\'ancrer durablement.'
+    : acc>=60? 'Belle séance. Les notions ratées reviendront plus vite, c\'est voulu : c\'est comme ça qu\'on progresse.'
+    : 'Les débuts sont toujours les plus durs. Chaque erreur d\'aujourd\'hui reviendra demain, et tu la reconnaîtras.';
+  const box=$('.lbody'); $('#foot').className='lfoot'; $('#fb').innerHTML='';
+  box.innerHTML=`<div class="result">
+    ${MASCOT().replace('class="mascot"','width="120" height="120"')}
+    <h1>${goalHit?'Objectif du jour atteint !':'Leçon terminée !'}</h1>
+    <p>${msg}</p>
+    <div class="tiles">
+      <div class="tile" style="--tc:var(--sun-d)"><span>XP gagnés</span><b>+${L.xp}</b></div>
+      <div class="tile" style="--tc:var(--ok)"><span>Précision</span><b>${acc}%</b></div>
+      <div class="tile" style="--tc:var(--c4)"><span>Temps</span><b>${mm}:${ss}</b></div>
+    </div>
+    ${L.maxCombo>=3?`<p style="color:var(--flame)">🔥 Meilleure série : ${L.maxCombo} bonnes réponses d'affilée</p>`:''}
+    <p>🔥 Série : ${S.streak} jour${S.streak>1?'s':''}</p>
+  </div>`;
+  const act=$('#act'); act.hidden=false; act.disabled=false; act.className='btn'; act.textContent='Continuer';
+  act.onclick=()=>{ closeLesson(); render(); };
+  $('#combo').textContent='';
+  beep('win'); confetti();
+}
+
+document.addEventListener('keydown',e=>{
+  if(!$('#lesson')) return;
+  if(e.target.tagName==='INPUT') return;
+  if(e.key==='Enter'){ e.preventDefault(); const a=$('#act'); if(a && !a.disabled && !a.hidden){ a.click(); } }
+  if(/^[1-4]$/.test(e.key) && cur && cur.keys && $('#foot').className==='lfoot'){ cur.keys(+e.key-1); }
+  if(e.key==='Escape') endEarly();
+});
+
+/* ---- confettis ---- */
+function confetti(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const c=$('#confetti'); c.hidden=false; const ctx=c.getContext('2d'); const W=c.width=innerWidth, H=c.height=innerHeight;
+  const cs=getComputedStyle(document.documentElement); const cols=['--c1','--c2','--c3','--c4','--c5','--c6','--sun'].map(v=>cs.getPropertyValue(v).trim());
+  const P=Array.from({length:140},()=>({x:W/2+(Math.random()-.5)*80,y:H*.35,vx:(Math.random()-.5)*11,vy:-Math.random()*12-4,r:Math.random()*6+4,c:pick(cols),a:Math.random()*6,va:(Math.random()-.5)*.3}));
+  let f=0; (function loop(){ ctx.clearRect(0,0,W,H); P.forEach(p=>{p.vy+=.32;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.a+=p.va;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.a);ctx.fillStyle=p.c;ctx.fillRect(-p.r/2,-p.r/4,p.r,p.r/2);ctx.restore();});
+    if(++f<150) requestAnimationFrame(loop); else { ctx.clearRect(0,0,W,H); c.hidden=true; } })();
+}
+
+render();
+</script>
+
+</body>
+</html>
