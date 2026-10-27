@@ -523,9 +523,34 @@ async function playClip(k){
     return true;
   }catch(e){ return false; }
 }
-function speak(t){
+// Lecture par un élément <audio> unique : fonctionne sur iPhone même en mode silencieux,
+// et reste « déverrouillé » après le premier toucher pour les lectures automatiques.
+let clipEl=null;
+const SILENT='data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=';
+function audioEl(){ if(!clipEl){ clipEl=new Audio(); clipEl.preload='auto'; clipEl.setAttribute('playsinline',''); clipEl.setAttribute('webkit-playsinline',''); } return clipEl; }
+function unlockAudio(){
+  try{ const el=audioEl(); if(!el.dataset.unlocked){ el.dataset.unlocked='1'; el.src=SILENT; const p=el.play(); if(p&&p.catch) p.catch(()=>{}); } }catch(e){}
+  try{ clipCtx = clipCtx || new (window.AudioContext||window.webkitAudioContext)(); if(clipCtx.state==='suspended') clipCtx.resume(); }catch(e){}
+}
+['pointerdown','touchend','keydown'].forEach(ev=>document.addEventListener(ev,unlockAudio,{capture:true,passive:true}));
+function playEl(k){
+  return new Promise(res=>{
+    try{
+      const el=audioEl();
+      try{ speechSynthesis.cancel(); }catch(e){}
+      try{ if(clipSrc) clipSrc.stop(); }catch(e){}
+      el.pause(); el.src='data:audio/mpeg;base64,'+window.WQ_AUDIO[k];
+      const p=el.play(); if(p&&p.then) p.then(()=>res(true),()=>res(false)); else res(true);
+    }catch(e){ res(false); }
+  });
+}
+function speak(t,wait=0){
   const k=akey(t);
-  if(window.WQ_AUDIO && window.WQ_AUDIO[k]){ playClip(k).then(ok=>{ if(!ok) ttsSpeak(t); }); return; }
+  if(!window.WQ_AUDIO){ // enregistrements encore en chargement : on attend un peu
+    if(wait<40) return setTimeout(()=>speak(t,wait+1),250);
+    return ttsSpeak(t);
+  }
+  if(window.WQ_AUDIO[k]){ playEl(k).then(ok=>{ if(ok) return; playClip(k).then(ok2=>{ if(!ok2) ttsSpeak(t); }); }); return; }
   ttsSpeak(t);
 }
 function ttsSpeak(t,tries=0){
