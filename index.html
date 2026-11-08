@@ -21,6 +21,7 @@
   --sun:#FFBE2E; --sun-d:#D99A0B; --flame:#FF7A1A;
   --c1:#12A99B; --c1d:#0C7F74; --c2:#FF7A1A; --c2d:#CC5B08; --c3:#E5468F; --c3d:#B42C6C;
   --c4:#3D7BF2; --c4d:#2557BE; --c5:#7A5AF0; --c5d:#5638C2; --c6:#F2A516; --c6d:#C27F00; --c7:#E8513D; --c7d:#B53524;
+  --c8:#169B62; --c8d:#0F7449; --c9:#A0692B; --c9d:#784D1C; --c10:#6E9B1E; --c10d:#517514; --c11:#B5527F; --c11d:#8C3A60; --c12:#1A93B8; --c12d:#0F6E8C;
   --onc:#FFFFFF; --shadow:0 2px 0 rgba(27,35,64,.06), 0 8px 24px rgba(27,35,64,.06);
   --f-display:"Fredoka","Baloo 2","Trebuchet MS",system-ui,sans-serif;
   --f-body:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;
@@ -332,6 +333,12 @@ const VOC = [
  ['to give up','renoncer à / abandonner','We are not asking anyone ___ their traditions.',['to give in','to give out','to give away']],
  ['community relations','relations entre communautés','Protests and counter-protests could damage ___.',['community relationship of','relations community','communities relation']],
  ['a concerned resident','un habitant inquiet','The letter is signed by ___ of Northern Ireland.',['a concerning resident','a concern resident','a residing concern']],
+ ['unwanted','non désiré / indésirable','However, this march is seen by many local people as ___ and divisive.',['wanted','welcome','helpful']],
+ ['public safety','la sécurité publique','We believe that ___ and social harmony should be the priority.',['public safe','safety public','publicly safe']],
+ ['social harmony','l\'harmonie sociale','We believe that public safety and ___ should be the priority.',['social harmful','harmony social','socially harmony']],
+ ['route','un itinéraire / un parcours','Encourage them to cancel the march or choose a different ___.',['root','road map','way out']],
+ ['confrontation','l\'affrontement','Peace and dialogue are more important than political ___.',['conversation','cooperation','confirmation']],
+ ['to prevent','empêcher / éviter','We hope that you will help ___ further tensions.',['to provide','to pretend','to present']],
 ];
 
 const GRAM = [
@@ -423,6 +430,273 @@ const EXPR = [
  ['Thank you for your attention to this matter.','Merci de l\'attention que vous porterez à cette question.','Thank you ___ your attention to this matter.','for',['to','of','about'],['the','at']],
 ];
 
+/* =========================================================
+   CHAPITRE « DIVIDED IRELAND, SHARED IDENTITY » (Snapfile 3, p. 40-43)
+   [en, fr, phrase à trous, distracteurs, astuce]
+   ========================================================= */
+const THEMES = {
+ u8:[
+  {h:"Lieux et frontière",ic:"🗺️",w:[
+   ["a border","une frontière","They crossed ___ between Northern Ireland and the Republic.",["a ceasefire","a judge","a march"]],
+   ["a boundary","une limite / une frontière",null,null,"Le manuel définit la frontière comme « a limit or boundary »."],
+   ["a frontier","une frontière",null,null],
+   ["Northern Ireland","l'Irlande du Nord","Derry is located in ___, but Donegal is in the Republic.",["the Republic of Ireland","the Free State","outer space"],"Fait partie du Royaume-Uni."],
+   ["the Republic of Ireland","la République d'Irlande","The characters leave Northern Ireland and enter ___.",["the United Kingdom","the Orange Order","the Troubles"],"Le sud de l'île, pays indépendant qui utilise l'euro."],
+   ["the Free State","l'État libre (d'Irlande)","\"We're in ___ now,\" says Uncle Tally after the border.",["the Troubles","the Orange Order","outer space"],"Ancien nom de la République d'Irlande, utilisé par Uncle Tally."],
+   ["the United Kingdom","le Royaume-Uni"],
+   ["partition","la partition (division d'un pays)","In 1920, ___ divided the island into two parts.",["peace","unity","relief"]],
+   ["to cross the border","traverser la frontière","Fergus and Uncle Tally had ___ in their van.",["to dig the peat","to ban the march","to hold hands"]],
+   ["a checkpoint","un poste de contrôle","A soldier was waiting at ___ on the border.",["a bog","a flock","a ceasefire"]],
+   ["a customs post","un poste de douane"],
+   ["tangible","tangible, réel",null,null,"Une frontière peut être « tangible or invisible »."],
+   ["imposed","imposé",null,null,"Une frontière peut être « inevitable or imposed »."],
+  ]},
+  {h:"Le conflit et les communautés",ic:"⚔️",w:[
+   ["the Troubles","les « Troubles » (conflit en Irlande du Nord)","The conflict known as ___ lasted from 1969 to 1998.",["the Famine","the Rising","the Plantation"],"Conflit entre nationalistes et unionistes, terminé par l'accord de 1998."],
+   ["a conflict","un conflit"],
+   ["a dispute","un conflit / un différend","There was ___ between the residents and the marchers.",["a bucket","a landscape","a hole"]],
+   ["tensions","des tensions","The march caused ___ and protests in the area.",["ceasefires","freckles","dunes"]],
+   ["violence","la violence","The government banned the march to avoid ___.",["goodwill","hope","dialogue"]],
+   ["a nationalist","un nationaliste (favorable à une Irlande unifiée)","___ wants a united Ireland.",["A unionist","A soldier","A judge"],"Souvent catholique."],
+   ["a unionist","un unioniste (favorable au maintien dans le Royaume-Uni)","___ wants Northern Ireland to stay in the UK.",["A nationalist","A Republican","A nun"],"Souvent protestant."],
+   ["a Republican","un républicain (pour une Irlande unie)",null,null,"Uncle Tally rêve d'une île où ne vivraient que des Republicans."],
+   ["a Catholic","un catholique"],
+   ["a Protestant","un protestant"],
+   ["a community","une communauté"],
+   ["the Orange Order","l'Ordre d'Orange (organisation protestante unioniste)","A march of ___ was planned on the Garvaghy Road.",["the Free State","the Good Friday Agreement","the Troubles"]],
+   ["a march","un défilé","Many residents opposed ___ through their neighbourhood.",["a judge","a flock","a nun"]],
+   ["protest","une manifestation / manifester","The march caused tensions and ___ in the area.",["relief","freedom","hilarity"],"Protest est un nom (a protest) et un verbe (to protest)."],
+   ["a counter-protest","une contre-manifestation"],
+   ["a resident","un habitant"],
+   ["a judge","un juge","The dispute was examined by ___ in court.",["a resident","a nun","a soldier"]],
+   ["a court","un tribunal"],
+   ["to ban","interdire","The UK government decided ___ the march to avoid violence.",["to dig","to saw","to bite"]],
+   ["to cancel","annuler","We ask the Orange Order ___ the march.",["to cross","to harden","to thump"]],
+   ["to warn","avertir, prévenir"],
+   ["a soldier","un soldat","___ stopped the van at the checkpoint.",["A nun","A judge","A flock"]],
+   ["a squaddie","un bidasse (soldat, familier)",null,null,"Mot familier employé par Uncle Tally."],
+   ["a rifle","un fusil","The soldier by the hut stood with ___.",["a brush","a bucket","a mantra"]],
+   ["Semtex","un explosif (le Semtex)",null,null,"« I could have a truckload of Semtex » : Uncle Tally se moque du contrôle."],
+   ["a ceasefire","un cessez-le-feu","In 1994, the IRA announced ___.",["a lockout","a famine","a plantation"]],
+   ["the peace process","le processus de paix","Violence has largely disappeared since ___.",["the Troubles","the Famine","the Plantation"]],
+   ["an agreement","un accord"],
+   ["a treaty","un traité"],
+   ["an ally","un allié"],
+   ["an enemy","un ennemi"],
+   ["a foreigner","un étranger"],
+   ["a citizen","un citoyen"],
+   ["sterling","la livre sterling",null,null,"Monnaie du Royaume-Uni ; la République d'Irlande utilise l'euro."],
+   ["the Prime Minister","le Premier ministre (britannique)"],
+   ["the First Minister","la Première ministre (d'Irlande du Nord)",null,null,"Michelle O'Neill, membre du Sinn Féin."],
+   ["reunification","la réunification","Today, there are debates on ___ and post-Brexit relations.",["partition","the Famine","Home Rule"]],
+  ]},
+ ],
+ u9:[
+  {h:"Mots de la frise historique",ic:"🕰️",w:[
+   ["forces","des troupes"],
+   ["to land","débarquer",null,null,"1169 : Anglo-Norman forces land in Ireland."],
+   ["to assert one's authority","imposer son autorité"],
+   ["a conquest","une conquête"],
+   ["the Plantation of Ulster","la colonisation de l'Ulster (colons protestants)"],
+   ["a battle","une bataille"],
+   ["the Flight of the Earls","la fuite des comtes (1607)"],
+   ["a rebellion","une rébellion"],
+   ["the Easter Rising","l'insurrection de Pâques (1916)","In 1916, ___ took place in Dublin.",["the Great Famine","the Act of Union","the Good Friday Agreement"]],
+   ["the Act of Union","l'Acte d'Union (1801)"],
+   ["emancipation","l'émancipation (obtention de droits)",null,null,"1829 : Catholic Emancipation."],
+   ["the Great Famine","la Grande Famine (1845-1852)","___ took place from 1845 to 1852.",["the Easter Rising","Bloody Sunday","the Troubles"]],
+   ["Home Rule","l'autonomie (Home Rule)","In 1914, ___ was suspended.",["the Easter Rising","the Great Famine","Bloody Sunday"],"Un gouvernement irlandais au sein du Royaume-Uni."],
+   ["a bill","un projet de loi"],
+   ["suspended","suspendu","In 1914, Home Rule was ___.",["declared","established","landed"]],
+   ["a lockout","une grève patronale (lock-out)"],
+   ["an electoral victory","une victoire électorale"],
+   ["the War of Independence","la guerre d'indépendance"],
+   ["a civil war","une guerre civile"],
+   ["established","établi, fondé","In 1922, the Irish Free State was ___.",["suspended","banned","sawn"]],
+   ["declared","proclamé, déclaré"],
+   ["a constitution","une constitution"],
+   ["the Civil Rights Movement","le mouvement des droits civiques"],
+   ["Bloody Sunday","le Dimanche sanglant (1972)"],
+   ["a hunger strike","une grève de la faim","In 1981, prisoners went on ___.",["a ceasefire","a referendum","a lockout"]],
+   ["the Good Friday Agreement","l'accord du Vendredi saint (1998)","___ was signed in 1998 and brought peace.",["the Easter Rising","the Great Famine","the Flight of the Earls"],"Accord de paix qui met fin aux Troubles."],
+   ["an armed campaign","une lutte armée"],
+   ["a centenary","un centenaire"],
+   ["an anniversary","un anniversaire (d'un événement)"],
+   ["a referendum","un référendum","In 2015, Ireland held ___ on same-sex marriage.",["a hunger strike","a ceasefire","a centenary"]],
+   ["to take effect","entrer en vigueur",null,null,"2020 : Brexit takes effect."],
+   ["a debate","un débat"],
+  ]},
+ ],
+ u10:[
+  {h:"Identité : division et unité",ic:"🧩",w:[
+   ["identity","l'identité","The poem explores how borders affect people's ___.",["relief","peat","concrete"]],
+   ["a shared identity","une identité partagée"],
+   ["divided","divisé","Ireland is a ___ island: there is a border between North and South.",["united","hopeful","colourful"]],
+   ["united","uni"],
+   ["whole","entier, complet","The child feels connected to both countries: \"But I'm still ___.\"",["divided","torn","sawn"],"Le titre du poème d'Abby Oliveira."],
+   ["fragmented","fragmenté, morcelé"],
+   ["to split into","se diviser en, se séparer en",null,null,"Vocabulary spot p. 40."],
+   ["to break barriers","briser les barrières","Art can help young people ___ between communities.",["to draw blood","to dig peat","to harden"],"Vocabulary spot p. 40."],
+   ["a barrier","une barrière"],
+   ["to belong to","appartenir à","It is possible ___ several communities at once.",["to split into","to saw","to bite"]],
+   ["to feel torn between","se sentir déchiré entre","Living on the border, you can start ___ two countries.",["to thump","to dig for","to wave on"]],
+   ["both sides","les deux côtés","She feels connected to ___ and does not want to choose.",["the sea","the dunes","the gorse"]],
+   ["at once","à la fois","I thought I'd have to saw myself in half to stand in two countries ___.",["at all","at last","at first"]],
+   ["a connection","un lien"],
+   ["prejudice","un préjugé / les préjugés","\"Imaginations harden\" suggests that ___ develops over time.",["resilience","childhood","relief"]],
+   ["innate","inné","Divisions are learned rather than ___.",["whole","tense","hopeful"]],
+   ["learned","appris"],
+   ["childhood","l'enfance","The poem shows the innocence of ___.",["prejudice","resilience","concrete"]],
+   ["innocence","l'innocence"],
+   ["resilience","la résilience"],
+   ["freedom","la liberté","Birds cross borders without restrictions: they symbolise ___.",["fear","tension","violence"]],
+   ["safety","la sécurité"],
+   ["hope","l'espoir"],
+   ["hopeful","plein d'espoir","Uncle Tally's tone is humorous, ___ and optimistic.",["nervous","threatening","dull"]],
+  ]},
+  {h:"Émotions avant et après la frontière",ic:"😬",w:[
+   ["nervous","nerveux","Before the checkpoint, Fergus and Tally are very ___.",["relieved","hopeful","colourful"]],
+   ["anxious","anxieux, inquiet"],
+   ["tense","tendu"],
+   ["the tension","la tension","His humour helps him deal with ___.",["the relief","the hope","the freedom"]],
+   ["stressful","stressant","The photo shows a checkpoint, so crossing the border seems dangerous and ___.",["relieved","whole","colourful"]],
+   ["fear","la peur"],
+   ["afraid","effrayé, qui a peur"],
+   ["worried","inquiet"],
+   ["threatening","menaçant","The border is presented as a ___ barrier.",["peaceful","colourful","hopeful"]],
+   ["dangerous","dangereux"],
+   ["safe","sûr, en sécurité"],
+   ["your jaw-bone would stiffen","ta mâchoire se crispait",null,null,"Bog Child : la tension avant le poste-frontière."],
+   ["adrenalin pumps through your veins","l'adrénaline coule dans tes veines"],
+   ["relief","le soulagement","After the border, a sense of ___ replaces fear.",["tension","anxiety","danger"]],
+   ["relieved","soulagé","After crossing the border, they feel ___ and happy.",["nervous","tense","threatening"]],
+   ["hilarity would erupt","l'hilarité éclatait",null,null,"Bog Child : l'explosion de rire une fois la frontière passée."],
+   ["to laugh like clowns","rire comme des clowns",null,null,"« They both laughed like clowns. »"],
+   ["humorous","drôle, plein d'humour","Uncle Tally is nervous but also ___: he makes jokes.",["threatening","dull","afraid"]],
+   ["optimistic","optimiste"],
+   ["courage","le courage"],
+   ["bravery","la bravoure"],
+   ["determination","la détermination"],
+   ["to deal with","gérer, faire face à"],
+  ]},
+ ],
+ u11:[
+  {h:"Bog Child (Siobhan Dowd, p. 42)",ic:"🚐",w:[
+   ["peat","la tourbe","Fergus and his uncle are going to dig ___.",["concrete","gorse","sterling"],"Note du manuel : peat = tourbe."],
+   ["a bog","un marécage / une tourbière","Peat comes from ___.",["a hut","a van","a rifle"],"Note du manuel : bog = marécage."],
+   ["to dig","creuser"],
+   ["a van","une camionnette","They crossed the border in ___.",["a bog","a flock","a rack"]],
+   ["a hut","une guérite / une cabane","The soldier by ___ stood with a rifle.",["a flock","a rack","a goose"]],
+   ["pale","pâle"],
+   ["freckles","des taches de rousseur","He was young-looking and pale, with ___.",["feathers","dunes","acres"]],
+   ["to wave someone on","faire signe à quelqu'un de passer"],
+   ["the butt of the gun","la crosse du fusil"],
+   ["a truckload of","un camion entier de"],
+   ["wee","petit (Irlande, Écosse)","\"I could have a truckload of Semtex for all that ___ squaddie cares.\"",["pale","steep","fat"]],
+   ["to thump the wheel","taper sur le volant"],
+   ["gorse","l'ajonc (plante à fleurs jaunes)","The ___ got yellower as they climbed.",["peat","concrete","sterling"],"Note du manuel : gorse = a plant."],
+   ["steep","raide, en pente","The van turned up onto a ___ road.",["pale","wee","forked"]],
+   ["to climb","monter, grimper"],
+   ["a nun","une religieuse","\"Even ___ would be nervous crossing it,\" suggested Fergus.",["a van","a hut","a bog"]],
+   ["a dotted line","une ligne en pointillés","On the map, the border is ___, almost invisible.",["a forked tongue","a rattling tail","a brick wall"]],
+   ["to meander","serpenter"],
+   ["to mutter","marmonner"],
+   ["the dunes","les dunes"],
+   ["to be beamed","être téléporté",null,null,"Note du manuel : beamed = transported."],
+   ["outer space","l'espace"],
+   ["warp factor five","plus vite que la lumière",null,null,"Note du manuel : moving faster than the speed of light."],
+   ["to head to","se diriger vers"],
+   ["the horizon","l'horizon"],
+  ]},
+  {h:"Whole (Abby Oliveira, p. 43)",ic:"🐍",w:[
+   ["to saw","scier","I thought I'd have ___ myself in half.",["to dig","to bite","to climb"],"Note du manuel : saw = cut with a tool. Participe : sawn."],
+   ["in half","en deux","I thought I'd have to saw myself ___ to stand in two countries at once.",["at once","in brief","in fact"]],
+   ["the wean","l'enfant (Irlande du Nord, Écosse)",null,null,"Note du manuel : wean = child."],
+   ["a back-road","une petite route de campagne"],
+   ["arms outstretched","les bras tendus"],
+   ["a rack","un chevalet (instrument de torture médiéval)","Arms outstretched as if tied to ___.",["a flock","a bog","a hut"],"Note du manuel : rack = medieval torture device."],
+   ["to hold hands","se tenir la main"],
+   ["a flock","une volée (groupe d'oiseaux)","She is ___ of Brent geese breaking for Inch.",["a rack","a hut","a bog"],"Note du manuel : flock = a group of birds."],
+   ["a goose","une oie",null,null,"Pluriel irrégulier : one goose, two geese."],
+   ["to point out","montrer, faire remarquer"],
+   ["a snake","un serpent","The poet imagines the border as ___ only old people can see.",["a goose","a flock","a nun"]],
+   ["a forked tongue","une langue fourchue"],
+   ["a rattling tail","une queue de crotale"],
+   ["concrete","le béton","The snake's belly cuts through water, ___, grass and stone.",["freckles","hilarity","sterling"],"Note du manuel : concrete = béton."],
+   ["to bite","mordre",null,null,"« Should I pretend this snake no longer bites? »"],
+   ["to pretend","faire semblant"],
+   ["to draw blood","faire couler le sang",null,null,"« All borders draw blood. »"],
+   ["a sword","une épée",null,null,"« The pen is the master of the sword. »"],
+   ["to harden","durcir",null,null,"« walls are only necessary until imaginations harden »"],
+   ["an acre","un acre (mesure de terrain)"],
+   ["a quarter","un quart"],
+  ]},
+ ],
+ u12:[
+  {h:"Décrire l'œuvre (p. 40)",ic:"🎨",w:[
+   ["a mural","une peinture murale","This artwork is a graffiti, or more precisely ___.",["a bucket","a crack","a brush"]],
+   ["a work of art","une œuvre d'art"],
+   ["an artwork","une œuvre d'art"],
+   ["graffiti","un graffiti"],
+   ["a brick wall","un mur de briques","The mural is painted on ___ in West Belfast.",["a bucket","a brush","a landscape"],"Vocabulary spot p. 40."],
+   ["a brush","un pinceau","You paint with ___.",["a bucket","a crack","a hole"],"Vocabulary spot p. 40."],
+   ["a bucket","un seau","One person is holding ___ of paint.",["a brush","a hole","a crack"],"Vocabulary spot p. 40."],
+   ["a crack","une fissure","In the middle of the wall, there is a big hole or ___.",["a brush","a bucket","a landscape"],"Vocabulary spot p. 40."],
+   ["a hole","un trou","Two people are looking through ___ in the wall.",["a bucket","a brush","a flock"],"Vocabulary spot p. 40."],
+   ["a landscape","un paysage","Through the crack, we can see ___ behind the wall.",["a bucket","a brush","a rifle"],"Vocabulary spot p. 40."],
+   ["a trompe-l'œil effect","un effet de trompe-l'œil","It looks like the wall is really broken: it is ___.",["a stanza","a rhyme","a bucket"],"Vocabulary spot p. 40."],
+   ["dull","terne / sans couleur","The wall is grey and black: the colours are ___.",["bright","colourful","vivid"],"dull = drab = colourless."],
+   ["drab","terne / sans couleur"],
+   ["colourless","sans couleur / terne"],
+   ["bright","vif, lumineux"],
+   ["colourful","coloré"],
+   ["a contrast","un contraste","The dark wall and the bright landscape create ___.",["a crack","a stanza","a hole"]],
+   ["above","au-dessus (de)"],
+   ["below","en dessous (de)"],
+   ["behind","derrière","The landscape seems to be ___ the wall, on the other side.",["above","below","in the middle of"]],
+   ["through","à travers"],
+   ["in the middle of","au milieu de","___ the wall, there is a big hole.",["Above","Behind","Through"]],
+   ["to convey","transmettre, exprimer"],
+   ["to illustrate","illustrer"],
+  ]},
+  {h:"Analyser un texte ou un poème",ic:"🔎",w:[
+   ["an extract","un extrait"],
+   ["the main character","le personnage principal","Fergus McCann is ___ of the extract.",["the narrator","the speaker","the persona"]],
+   ["a third-person narrator","un narrateur à la 3e personne"],
+   ["internal focalisation","la focalisation interne"],
+   ["suspense","le suspense"],
+   ["suspenseful","plein de suspense"],
+   ["vivid","vivant, frappant","Siobhan Dowd uses ___ descriptions of the landscape.",["dull","tense","wee"]],
+   ["sensory imagery","les images sensorielles"],
+   ["the speaker","le locuteur / la voix du poème"],
+   ["the persona","la voix du poème"],
+   ["a stanza","une strophe"],
+   ["a line","un vers / une ligne"],
+   ["layout","la mise en page"],
+   ["a metaphor","une métaphore","The sleeping snake is ___ for the border.",["a stanza","a narrator","a rhyme"]],
+   ["a symbol","un symbole"],
+   ["to symbolise","symboliser"],
+   ["a repetition","une répétition"],
+   ["an enumeration","une énumération"],
+   ["binary oppositions","des oppositions binaires","\"Here / there\", \"ally / enemy\": the poet uses ___.",["rhetorical questions","vivid descriptions","sensory imagery"]],
+   ["a rhetorical question","une question rhétorique","\"Should I pretend this snake no longer bites?\" is ___.",["a metaphor","an enumeration","a stanza"]],
+   ["rhythm","le rythme"],
+   ["tone","le ton","The ___ of Uncle Tally's speech is humorous and hopeful.",["rhythm","layout","stanza"]],
+   ["a statement","une affirmation"],
+   ["a slam poem","un poème slam"],
+   ["to deliver a poem","dire, interpréter un poème"],
+   ["the legacy","l'héritage / les séquelles"],
+  ]},
+ ],
+};
+const THEME_UNITS = [
+ {id:'u8',name:'La frontière irlandaise',sub:'Border · Troubles · march · ban',ic:'🚧',c:'--c8',short:'Frontière'},
+ {id:'u9',name:'Repères d\'histoire',sub:'Easter Rising · Good Friday Agreement…',ic:'🕰️',c:'--c9',short:'Histoire'},
+ {id:'u10',name:'Identité & émotions',sub:'Whole · divided · relief · nervous',ic:'💚',c:'--c10',short:'Identité'},
+ {id:'u11',name:'Bog Child & Whole',sub:'Les mots des deux textes',ic:'📖',c:'--c11',short:'Textes'},
+ {id:'u12',name:'Décrire & analyser',sub:'Mural · crack · metaphor · tone',ic:'🎨',c:'--c12',short:'Analyse'},
+];
+
 const UNITS = [
  {id:'u1',name:'Ajouter & opposer',sub:'Addition · Contrast',ic:'➕',c:'--c1',short:'Addition & Contrast',cats:['add','con']},
  {id:'u2',name:'Causes, comparaisons & temps',sub:'Cause · Comparison · Time',ic:'⚡',c:'--c2',short:'Cause · Temps',cats:['cau','cmp','tim']},
@@ -431,17 +705,22 @@ const UNITS = [
  {id:'u5',name:'Structures qui rapportent des points',sub:'If clauses, passif, modaux…',ic:'🧩',c:'--c5',short:'Grammaire'},
  {id:'u6',name:'La méthode en 7 étapes',sub:'Think → Plan → Draft → Correct → Copy → Check',ic:'🪜',c:'--c6',short:'Méthode'},
  {id:'u7',name:'La lettre argumentative',sub:'Portadown · expressions utiles',ic:'✉️',c:'--c7',short:'Lettre'},
+ ...THEME_UNITS,
 ];
 
 /* ---- construire la liste d'items ---- */
 const ITEMS = [];
-const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\(.*?\)/g,'').replace(/\.\.\.|…/g,' ').replace(/[^a-z' ]/g,' ').replace(/\s+/g,' ').trim();
+const norm = s => s.toLowerCase().replace(/œ/g,'oe').normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\(.*?\)/g,'').replace(/\.\.\.|…/g,' ').replace(/[^a-z' ]/g,' ').replace(/\s+/g,' ').trim();
 const frParts = fr => fr.split('/').map(norm).filter(Boolean);
+const stripArt = a => String(a).replace(/^(a|an|the|to)\s+/i,'');
 LW.forEach(([en,fr,cats,s,d,tip,build])=>{
   const cs = cats.split(' ');
   ITEMS.push({id:'lw:'+en,kind:'word',en,fr,cats:cs,s,d,tip,build,units:UNITS.filter(u=>u.cats&&u.cats.some(c=>cs.includes(c))).map(u=>u.id)});
 });
 VOC.forEach(([en,fr,s,d])=>ITEMS.push({id:'voc:'+en,kind:'word',en,fr,cats:['voc'],s,d,units:['u7']}));
+const THEME_NAME = {};
+THEME_UNITS.forEach(u=>{ THEME_NAME['th'+u.id]=u.name;
+  THEMES[u.id].forEach(g=>g.w.forEach(([en,fr,s,d,tip])=>ITEMS.push({id:'th:'+en,kind:'word',en,fr,cats:['th'+u.id],s,d,tip,keep:/[A-Z]/.test(en),units:[u.id],group:g.h}))); });
 GRAM.forEach(g=>ITEMS.push({id:'g:'+g.id,kind:'gram',g,units:['u5'],title:g.name}));
 METH.forEach(m=>ITEMS.push({id:'m:'+m.id,kind:'auth',title:m.title,ex:m.ex,units:['u6']}));
 LETTER.forEach(m=>ITEMS.push({id:'l:'+m.id,kind:'auth',title:m.title,ex:m.ex,units:['u7']}));
@@ -488,7 +767,7 @@ const sample = (a,n) => shuffle(a).slice(0,n);
 const unitOf = it => UNITS.find(u=>u.id===it.units[0]);
 const cap = w => w.charAt(0).toUpperCase()+w.slice(1);
 const low = w => w.charAt(0).toLowerCase()+w.slice(1);
-function fmtGap(word, atStart, keep){ if(keep) return word; return atStart?cap(word):low(word); }
+function fmtGap(word, atStart, keep){ if(atStart) return cap(word); if(keep) return word; return low(word); }
 const sameFr = (a,b) => frParts(a.fr).some(p=>frParts(b.fr).includes(p));
 function lev(a,b){ const m=a.length,n=b.length; const d=Array.from({length:m+1},(_,i)=>[i]); for(let j=1;j<=n;j++)d[0][j]=j; for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1)); return d[m][n]; }
 
@@ -596,24 +875,31 @@ function genEx(it, L){
   if(it.kind==='gram') return genGram(it,L);
   const e = pick(it.ex); return Object.assign({}, e, {item:it});
 }
+// distracteurs sans synonymes entre eux
+function distinct(list,n){ const out=[]; for(const w of shuffle(list)){ if(out.every(o=>!sameFr(o,w) && o.en!==w.en)) out.push(w); if(out.length===n) break; } return out; }
 function genWord(it,L){
-  const isLW = it.cats[0]!=='voc';
+  const isLW = !!CATS[it.cats[0]];
+  const isTh = it.cats[0].startsWith('th');
   const pool=[];
   pool.push('en2fr'); if(L>=1) pool.push('fr2en');
   if(isLW) pool.push('cat');
   if(it.s){ pool.push('gap','gap'); if(L>=2) pool.push('gap'); }
   if(L>=2 && isLW) pool.push('type','type');
   if(L>=3 && isLW) pool.push('type');
+  if(isTh){ if(L>=1) pool.push('type'); if(L>=2) pool.push('type','type'); }
   if(it.build) pool.push('build','build');
   const t = pick(pool);
-  const peers = WORDS.filter(w=>w!==it && (w.cats[0]==='voc')===!isLW && !sameFr(w,it) && w.en!==it.en);
-  const catName = isLW ? CATS[it.cats[0]].fr : 'vocabulaire de la lettre';
+  const sameGroup = w => isLW ? !!CATS[w.cats[0]] : w.cats[0]===it.cats[0];
+  let peers = WORDS.filter(w=>w!==it && sameGroup(w) && !sameFr(w,it) && w.en!==it.en);
+  if(isTh && peers.length<3) peers = peers.concat(WORDS.filter(w=>w.cats[0].startsWith('th') && w.cats[0]!==it.cats[0] && !sameFr(w,it)));
+  const catName = isLW ? CATS[it.cats[0]].fr : isTh ? THEME_NAME[it.cats[0]] : 'vocabulaire de la lettre';
+  const sayEx = it.s ? fillGap(it.s,it.en,it.keep) : it.en;
   if(t==='en2fr'){
-    const ds = sample(peers,3).map(w=>w.fr);
-    return {t:'mcq',item:it,q:`Que veut dire « ${it.en} » ?`,speakQ:it.en,opts:[it.fr,...ds],why:it.tip||'',say:it.s?fillGap(it.s,it.en):it.en};
+    const ds = distinct(peers,3).map(w=>w.fr);
+    return {t:'mcq',item:it,q:`Que veut dire « ${it.en} » ?`,speakQ:it.en,opts:[it.fr,...ds],why:it.tip||'',say:sayEx};
   }
   if(t==='fr2en'){
-    const ds = sample(peers.filter(w=>!w.cats.some(c=>it.cats.includes(c))||!isLW),3).map(w=>w.en);
+    const ds = distinct(peers.filter(w=>!w.cats.some(c=>it.cats.includes(c))||!isLW),3).map(w=>w.en);
     return {t:'mcq',item:it,q:`Comment dit-on « ${it.fr} » ?`,sub:catName,opts:[it.en,...ds],why:it.tip||'',say:it.en};
   }
   if(t==='cat'){
@@ -622,11 +908,12 @@ function genWord(it,L){
     return {t:'mcq',item:it,q:`« ${it.en} » sert à exprimer…`,speakQ:it.en,opts:[right,...ds].map(c=>CATS[c].ic+'  '+CATS[c].fr),why:`${it.en} = ${it.fr}. ${it.tip||''}`,say:it.en};
   }
   if(t==='gap'){
-    return {t:'gap',item:it,s:it.s,a:it.en,d:it.d,why:`${it.en} = ${it.fr}. ${it.tip||''}`};
+    return {t:'gap',item:it,s:it.s,a:it.en,d:it.d,keep:it.keep,why:`${it.en} = ${it.fr}. ${it.tip||''}`};
   }
   if(t==='type'){
-    const accept = WORDS.filter(w=>w.cats[0]!=='voc' && sameFr(w,it)).map(w=>w.en);
-    return {t:'type',item:it,q:`Écris en anglais : « ${it.fr} »`,sub:catName,a:it.en,accept,why:it.tip||'',say:it.s?fillGap(it.s,it.en):it.en};
+    const alts = WORDS.filter(w=>(isLW? !!CATS[w.cats[0]] : w.cats[0]===it.cats[0]) && sameFr(w,it)).map(w=>w.en);
+    const accept = isTh ? [...new Set(alts.flatMap(a=>[a,stripArt(a)]))] : alts;
+    return {t:'type',item:it,q:`Écris en anglais : « ${it.fr} »`,sub:catName,a:it.en,accept,alts,why:it.tip||'',say:sayEx};
   }
   if(t==='build'){
     return {t:'build',item:it,q:`Traduis : « ${it.build.fr} »`,a:it.build.en,extra:it.build.extra,why:it.tip||''};
@@ -642,7 +929,7 @@ function genGram(it,L){
   const [s,a,d,why]=pick(g.gaps);
   return {t:'gap',item:it,s,a,d,why:why+' ('+g.fr+')',keep:true};
 }
-function fillGap(s,w){ const atStart=s.trim().startsWith('___'); return s.replace('___',fmtGap(w,atStart)); }
+function fillGap(s,w,keep){ const atStart=s.trim().startsWith('___'); return s.replace('___',fmtGap(w,atStart,keep)); }
 
 /* =========================================================
    SÉANCES
@@ -674,7 +961,7 @@ function buildSession(unitId){
 /* =========================================================
    VUES — ACCUEIL
    ========================================================= */
-let TAB='learn', FICHE='u1';
+let TAB='learn', FICHE='u8';
 function render(){
   const app=$('#app');
   const st=curStreak(), today=S.days[dayKey()]||0;
@@ -710,12 +997,14 @@ function weekStrip(){
 function viewLearn(today){
   const due=dueItems().length;
   const pct=Math.min(1,today/S.goal);
-  const rec = UNITS.find(u=>mastery(u.id)<.5) || UNITS[0];
-  const nodes = UNITS.map(u=>{ const m=mastery(u.id); const n=ITEMS.filter(i=>i.units.includes(u.id)).length; const d=ITEMS.filter(i=>i.units.includes(u.id)&&isDue(i.id)).length;
+  const recU = THEME_UNITS.find(u=>mastery(u.id)<.5) || UNITS.find(u=>mastery(u.id)<.5) || UNITS[0];
+  const node = u=>{ const m=mastery(u.id); const n=ITEMS.filter(i=>i.units.includes(u.id)).length; const d=ITEMS.filter(i=>i.units.includes(u.id)&&isDue(i.id)).length;
     return `<button class="node" data-unit="${u.id}" style="--uc:var(${u.c});--ucd:var(${u.c}d)">
-      <div class="bubble">${u===rec?'<span class="start-tag">À TOI !</span>':''}${ringSVG(m,84,7,`var(${u.c})`)}<div class="disc">${u.ic}</div></div>
+      <div class="bubble">${u===recU?'<span class="start-tag">À TOI !</span>':''}${ringSVG(m,84,7,`var(${u.c})`)}<div class="disc">${u.ic}</div></div>
       <div class="lbl"><b>${esc(u.name)}</b><span>${esc(u.sub)}</span>${d?`<em>${d} à revoir</em>`:`<span>${n} notions · ${Math.round(m*100)} % maîtrisé</span>`}</div>
-    </button>`; }).join('');
+    </button>`; };
+  const nodesNew = THEME_UNITS.map(node).join('');
+  const nodesOld = UNITS.filter(u=>!THEME_UNITS.includes(u)).map(node).join('');
   return `
   <div class="card goal">
     <div class="ring">${ringSVG(pct,78,9,'var(--sun)')}<b>${Math.round(pct*100)}%</b></div>
@@ -723,8 +1012,10 @@ function viewLearn(today){
       <button class="btn" id="review">${due?`Révision du jour · ${due}`:'Entraînement libre'}</button></div>
     ${weekStrip()}
   </div>
-  <div class="section-title">Ton parcours</div>
-  <div class="path">${nodes}</div>
+  <div class="section-title">Divided Ireland · chapitre en cours</div>
+  <div class="path">${nodesNew}</div>
+  <div class="section-title">Writing Quest · connecteurs, grammaire, méthode</div>
+  <div class="path">${nodesOld}</div>
   <div class="section-title">Pourquoi ça marche</div>
   <div class="card science">
     <div class="row"><div class="ic">📅</div><div><b>Répétition espacée</b><p>Chaque notion revient juste avant que tu l'oublies : 10 min, 1 j, 2 j, 4 j, 8 j, 16 j…</p></div></div>
@@ -752,7 +1043,7 @@ function openSheet(uid){
 function lvlBars(id){ const l=lvl(id); let o='<div class="lvl" title="Maîtrise">'; for(let i=1;i<=MAXLVL;i++) o+=`<s class="${i<=l?'on':''}"></s>`; return o+'</div>'; }
 function viewFiches(){
   const u=UNITS.find(x=>x.id===FICHE);
-  const chips = UNITS.map(x=>`<button class="chip ${x.id===FICHE?'on':''}" data-fiche="${x.id}" style="--uc:var(${x.c})">${x.ic} ${esc(x.short)}</button>`).join('');
+  const chips = [...THEME_UNITS, ...UNITS.filter(x=>!THEME_UNITS.includes(x))].map(x=>`<button class="chip ${x.id===FICHE?'on':''}" data-fiche="${x.id}" style="--uc:var(${x.c})">${x.ic} ${esc(x.short)}</button>`).join('');
   let content='';
   if(u.cats){
     content = u.cats.map(c=>{ const ws=WORDS.filter(w=>w.cats.includes(c));
@@ -773,6 +1064,12 @@ function viewFiches(){
       <div class="fitem"><div><div class="en">1re relecture : la langue</div><div class="fr">Verbes (temps, accords) · a / an / the, pluriels · prépositions (interested in, depend on, good at) · structures complexes · faux amis, répétitions, mots français oubliés</div></div></div>
       <div class="fitem"><div><div class="en">2e relecture : la ponctuation</div><div class="fr">Majuscules · points · virgules · apostrophes (don't, didn't, I'd rather) · paragraphes séparés. Puis recopier sans corriger au fil de la copie.</div></div></div>
       <div class="fitem"><div><div class="en">Dernière question</div><div class="fr">If I were the examiner, would I understand my text easily?</div></div><button class="say" data-say="If I were the examiner, would I understand my text easily?" aria-label="Écouter">🔊</button></div></div></div>`;
+  } else if(THEMES[u.id]){
+    content = THEMES[u.id].map(g=>{ const ws=WORDS.filter(w=>w.units[0]===u.id && w.group===g.h);
+      return `<div class="fgroup"><h3><i>${g.ic}</i>${esc(g.h)}</h3><div class="fl">${
+        ws.map(w=>{ const ex = w.s?fillGap(w.s,w.en,w.keep):'';
+          return `<div class="fitem"><div><div class="en">${esc(w.en)}</div><div class="fr">${esc(w.fr)}</div></div><div style="display:flex;gap:8px;align-items:center">${lvlBars(w.id)}<button class="say" data-say="${esc(ex||w.en)}" aria-label="Écouter">🔊</button></div>${ex?`<div class="exs">${esc(ex)}</div>`:''}${w.tip?`<div class="tip">💡 ${esc(w.tip)}</div>`:''}</div>`; }).join('')
+      }</div></div>`; }).join('');
   } else {
     const hl = t => esc(t).replace(/\b(However|As a result|Today|Unfortunately|For these reasons|Such a decision|It would also|Instead|Thank you)\b/g,'<mark>$1</mark>');
     const letter=[
@@ -957,7 +1254,7 @@ function showEx(){
     let hints=0; L.hinted=false;
     $('#hint').onclick=()=>{ hints++; L.hinted=true; const n=Math.min(ex.a.length, hints*2); const nw=ex.a.split(' ').length; $('#hint').textContent='Indice : '+ex.a.slice(0,n)+'…  ('+nw+' mot'+(nw>1?'s':'')+')'; };
     cur.check=()=>{ inp.disabled=true; const v=norm(inp.value); const acc=(ex.accept||[ex.a]).map(norm);
-      if(acc.includes(v)) return {ok:true, answer:ex.a, extra: ex.accept&&ex.accept.length>1?'Autres réponses possibles : '+ex.accept.filter(a=>norm(a)!==v).join(', '):''};
+      if(acc.includes(v)){ const others=(ex.alts||ex.accept||[]).filter(a=>norm(a)!==v && norm(stripArt(a))!==v); return {ok:true, answer:ex.a, extra: others.length?'Autres réponses possibles : '+others.join(', '):''}; }
       const close=acc.find(a=>a.length>=5 && lev(a,v)<=1);
       if(close) return {ok:true, answer:ex.a, extra:'Attention à l\'orthographe : '+(ex.accept||[ex.a]).find(a=>norm(a)===close)};
       return {ok:false, answer:ex.a}; };
